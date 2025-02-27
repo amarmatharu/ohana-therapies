@@ -43,12 +43,12 @@ $(document).ready(function () {
         if (height > width) {
             $('html, body').animate({
                 scrollTop: $($.attr(this, 'href')).offset().top - 90
-            }, 1500);
+            }, 200);
             return false;
         } else if (height < width) {
             $('html, body').animate({
                 scrollTop: $($.attr(this, 'href')).offset().top - 70
-            }, 1500);
+            }, 200);
             return false;
         }
     });
