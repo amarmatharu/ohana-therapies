@@ -1,10 +1,7 @@
 import React from 'react';
 import '../assets/js/bootstrap.bundle.js';
 import '../assets/js/bootstrap.bundle.js.map';
-<<<<<<< HEAD
 import '../assets/js/custom.js';
-=======
->>>>>>> becae17 (Connecting local repo to GitHub)
 import '../assets/js/jquery3.5.1.min.js';
 import '../assets/css/style.css';
 import '../assets/css/bootstrap.min.css';
