@@ -14,7 +14,7 @@ import hero3 from  '../assets/images/hero-img-3.png';
 import hero4 from  '../assets/images/hero-img-4.png';
 
 const Hero = () => (
-  <section id="hero_sec">
+   <section id="hero_sec">
     <div className="container">
       <div className="cm_row">
         <div className="hero_content_wrap">
