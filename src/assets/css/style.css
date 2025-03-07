@@ -860,3 +860,53 @@ input::-webkit-inner-spin-button {
 	font-family: 'Open Sans', sans-serif;
 	font-family: Times-New-Roman-Regular;
 */
+
+.waitlist-container {
+	width: 275px;
+  }
+  
+  .waitlist-button {
+	border: 0;
+  }
+  
+  .waitlist-footer {
+	text-align: center;
+	padding: 5px 0;
+  }
+  
+  .waitlist-powered {
+	color: #ADB0B6;
+	text-decoration: none;
+	font-size: 14px;
+  }
+
+  .add-details-button {
+
+    background-color: #007bff; /* Blue button color */
+
+    color: white;
+
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 5px;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease; /* Hover effect */
+
+}
+
+
+
+.add-details-button:hover {
+
+    background-color: #0069d9; /* Slightly darker on hover */
+
+}
+
+  
+  
