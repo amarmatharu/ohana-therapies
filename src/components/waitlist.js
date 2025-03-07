@@ -27,7 +27,7 @@ export default function Waitlist() {
       const sizeResponse = await axios.get(`${config.baseUrl}/api/waitlist/size`);
       setWaitlistSize(sizeResponse.data.size);
 
-      const waitTimeResponse = await axios.get(`${config.baseUrl}api/waitlist/estimated-wait-time`);
+      const waitTimeResponse = await axios.get(`${config.baseUrl}/api/waitlist/estimated-wait-time`);
       setEstimatedWaitTime(waitTimeResponse.data.estimatedWaitTime);
     } catch (error) {
       console.error("Error fetching waitlist data", error);
