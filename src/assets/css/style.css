@@ -89,10 +89,11 @@ img {
 	margin: 0 auto;
 }
 /*********************  Default-CSS  End *********************/
-html.cm-overflow{
-	overflow-y: hidden;
-	touch-action: none;
-}
+html.cm-overflow {
+	overflow-y: auto !important;
+	touch-action: auto;
+  }
+  
 /* Top Bar Css Start */
 #top_bar{
 	padding: 12px 0 7px;
@@ -883,21 +884,16 @@ input::-webkit-inner-spin-button {
   .add-details-button {
 
     background-color: #007bff; /* Blue button color */
-
     color: white;
-
     border: none;
-
     padding: 10px 20px;
-
     border-radius: 5px;
-
     font-size: 16px;
-
     cursor: pointer;
-
     transition: background-color 0.2s ease; /* Hover effect */
-
+	text-align: center;
+	margin: 20px auto;
+	display: block;
 }
 
 
@@ -907,6 +903,116 @@ input::-webkit-inner-spin-button {
     background-color: #0069d9; /* Slightly darker on hover */
 
 }
+
+/* Popup Form Container */
+.popup-form-container {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+	z-index: 1000;
+}
+
+/* Popup Form */
+.popup-form {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+	max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    position: relative;
+}
+
+.popup-form form {
+    display: block;
+    width: 100%;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Form Inputs */
+.popup-form input {
+    width: 500%;
+	max-width: 900px;
+    padding: 8px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Submit Button */
+.popup-form button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Fix Input Styles */
+.cn_input {
+    width: 120%;
+	max-width: 800px;
+    display: block;
+}
+
+.cn_input input {
+    width: 100%; /* Make input fields take full width */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+	box-sizing: border-box;
+}
+
+.cn_input select {
+    width: 100%; /* Make input fields take full width */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+	box-sizing: border-box;
+}
+
+.form_btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+	margin-top: 10px;
+}
+
+.contact_form_wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+ 
 
   
   

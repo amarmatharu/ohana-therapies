@@ -9,7 +9,12 @@ import '../assets/css/style.css';
 import subtract from '../assets/images/Subtract.png';
 
 export default function Waitlist() {
+  const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [insurance, setInsurance] = useState("");
+  const [location, setLocation] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [position, setPosition] = useState(null);
   const [waitlistSize, setWaitlistSize] = useState(0);
@@ -20,6 +25,10 @@ export default function Waitlist() {
 
   useEffect(() => {
     fetchWaitlistData();
+    document.body.style.overflow = "auto"; // Enable scrolling
+  return () => {
+    document.body.style.overflow = ""; // Reset when leaving the page
+  };
   }, []);
 
   const fetchWaitlistData = async () => {
@@ -60,10 +69,17 @@ export default function Waitlist() {
     const formattedPhone = formatPhoneNumber(phoneNumber);
     
     try {
-      const response = await axios.post(`${config.baseUrl}/api/waitlist`, { email, phoneNumber: formattedPhone });
+      const response = await axios.post(`${config.baseUrl}/api/waitlist`, { name, age: age ? parseInt(age, 10) : 0,  location, insurance,email, phoneNumber: formattedPhone });
       setPosition(response.data.position);
       fetchWaitlistData();
-      setShowForm(false);
+    // ✅ Reset form fields after submission
+    setName("");
+    setAge("");
+    setInsurance("");
+    setLocation("");
+    setEmail("");
+    setPhoneNumber("");
+    setShowForm(false);
 
       // Show toast message
       setShowToast(true);
@@ -75,6 +91,8 @@ export default function Waitlist() {
         console.error("Error signing up", error);
       }
     }
+      // Close the popup
+  setIsOpen(false);
   };
 
   return (
@@ -97,41 +115,74 @@ export default function Waitlist() {
           <p className="text-center text-gray-600">📌 <strong>{waitlistSize}</strong> people are currently on the waitlist.</p>
           <p className="text-center text-gray-600 mt-2">⏳ {estimatedWaitTime}</p>
         </CardContent>
-      </Card>
-      
-      <div className="mt-6 flex justify-center">
-        <Button onClick={() => setShowForm(!showForm)} className="add-details-button">
+        <div className="mt-6 flex justify-center">
+        <Button onClick={() => setIsOpen(true)} className="add-details-button">
           <Plus className="mr-2 text-white" size={20} /> <span className="">Add to Waitlist</span>
         </Button>
       </div>
+      </Card>
       
-      {showForm && (
-         <div className="container">
-         <div className="cm_sec_ttile">
-           <div className="sec_ttile">
-             <h1 className="sec_titel_text">Join <span>Waitlist</span></h1>
-             <img src={subtract} alt="Decorative separator" loading="lazy" />
-           </div>
-         </div>
-         <div className="d-flex justify-content-center align-items-center bg-light">
-           <div className="col-md-6 col-12">
-             <div className="contact_form_wrap">
-               <form onSubmit={handleSignup}>
-                 <div className="cn_input input_group">
-                   <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} aria-label="Email" required />
-                 </div>
-                 <div className="cn_input input_group">
-                   <input type="tel" name="phone" placeholder="Enter your phone number (optional)" value={phoneNumber} onChange={(e) => setPhoneNumber(formatPhoneNumber(e.target.value))} aria-label="Phone" required />
-                 </div>
-                 <button className="form_btn cn_btn" type="submit">Send</button>
-                 {position !== null && (
-                   <p className="mt-2 text-center text-green-700 font-semibold">Your position in the waitlist: {position}</p>
-                 )}
-               </form>
-             </div>
-           </div>
-         </div>
-       </div>
+           
+      {isOpen && (
+          <div className="popup-form-container">
+          <div className="popup-form">
+            <span className="close-btn" onClick={() => setIsOpen(false)}>&times;</span>
+            <div className="container">
+              <div className="cm_sec_ttile">
+                <div className="sec_ttile">
+                  <h1 className="sec_titel_text">Join <span>Waitlist</span></h1>
+                  <img src={subtract} alt="Decorative separator" loading="lazy" />
+                </div>
+              </div>
+              <div className="d-flex justify-content-center align-items-center bg-light">
+                <div className="col-md-6 col-12">
+                  <div className="contact_form_wrap">
+                    <form onSubmit={handleSignup}>
+                      <div className="cn_input input_group">
+                        <input type="text" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required />
+                      </div>
+                      <div className="cn_input input_group">
+                        <select type="text" placeholder="Enter your child's age" value={age} onChange={(e) => setAge(e.target.value ? parseInt(e.target.value, 10) : 0)} required >
+                           <option value="3">Select child's age:</option>
+                           <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            </select>
+
+                      </div>
+                      <div className="cn_input input_group">
+                        <input type="text" placeholder="Enter your insurance provider" value={insurance} onChange={(e) => setInsurance(e.target.value)} required />
+                      </div>
+                      <div className="cn_input input_group">
+                        <input type="text" placeholder="Enter your location" value={location} onChange={(e) => setLocation(e.target.value)} required />
+                      </div>
+                      <div className="cn_input input_group">
+                        <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                      </div>
+                      <div className="cn_input input_group">
+                        <input type="tel" name="phone" placeholder="Enter your phone number (optional)" value={phoneNumber} onChange={(e) => setPhoneNumber(formatPhoneNumber(e.target.value))} required />
+                      </div>
+                      <button className="form_btn cn_btn" type="submit">Send</button>
+                      {position !== null && (
+                        <p className="mt-2 text-center text-green-700 font-semibold">Your position in the waitlist: {position}</p>
+                      )}
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
