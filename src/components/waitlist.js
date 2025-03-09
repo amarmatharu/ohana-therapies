@@ -138,11 +138,11 @@ export default function Waitlist() {
                 <div className="col-md-6 col-12">
                   <div className="contact_form_wrap">
                     <form onSubmit={handleSignup}>
-                      <div className="cn_input input_group">
+                      <div className="cn_input_waitlist input_group">
                         <input type="text" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required />
                       </div>
                       <div className="cn_input input_group">
-                        <select type="text" placeholder="Enter your child's age" value={age} onChange={(e) => setAge(e.target.value ? parseInt(e.target.value, 10) : 0)} required >
+                        <select placeholder="Enter your child's age" value={age} onChange={(e) => setAge(e.target.value ? parseInt(e.target.value, 10) : 0)} required >
                            <option value="3">Select child's age:</option>
                            <option value="3">3</option>
                             <option value="4">4</option>
@@ -160,19 +160,19 @@ export default function Waitlist() {
                             </select>
 
                       </div>
-                      <div className="cn_input input_group">
+                      <div className="cn_input_waitlist">
                         <input type="text" placeholder="Enter your insurance provider" value={insurance} onChange={(e) => setInsurance(e.target.value)} required />
                       </div>
-                      <div className="cn_input input_group">
+                      <div className="cn_input_waitlist">
                         <input type="text" placeholder="Enter your location" value={location} onChange={(e) => setLocation(e.target.value)} required />
                       </div>
-                      <div className="cn_input input_group">
+                      <div className="cn_input_waitlist">
                         <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                       </div>
-                      <div className="cn_input input_group">
+                      <div className="cn_input_waitlist">
                         <input type="tel" name="phone" placeholder="Enter your phone number (optional)" value={phoneNumber} onChange={(e) => setPhoneNumber(formatPhoneNumber(e.target.value))} required />
                       </div>
-                      <button className="form_btn cn_btn" type="submit">Send</button>
+                      <button className="cn_input_waitlist" type="submit">Send</button>
                       {position !== null && (
                         <p className="mt-2 text-center text-green-700 font-semibold">Your position in the waitlist: {position}</p>
                       )}

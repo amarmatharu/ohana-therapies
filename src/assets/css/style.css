@@ -970,8 +970,14 @@ input::-webkit-inner-spin-button {
 
 /* Fix Input Styles */
 .cn_input {
-    width: 120%;
+    width: 100%;
 	max-width: 800px;
+    display: block;
+}
+
+.cn_input_waitlist {
+	width: 30%;
+	max-width: 700px;
     display: block;
 }
 
@@ -985,7 +991,7 @@ input::-webkit-inner-spin-button {
 }
 
 .cn_input select {
-    width: 100%; /* Make input fields take full width */
+    width: 150%; /* Make input fields take full width */
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
