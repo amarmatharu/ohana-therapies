@@ -45,11 +45,9 @@ const Header = () => {
               <img src={email_top} alt="Email Icon" loading="lazy" /> info@ohanatherapies.com
             </a>
             {!isWaitlistPage && (
-              <Link to="/waitlist" className="waitlist-button" aria-label="Join the Waitlist">
-                <img src={email_top} alt="Get in Touch" loading="lazy" /> Get in Touch
-              </Link>
+            <WaitlistButton />  
             )}
-            <WaitlistButton />
+            
           </div>
         </div>
       </div>
