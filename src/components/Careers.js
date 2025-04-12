@@ -51,7 +51,7 @@ const Careers = () => (
               </div>
               <div className="careers_input input_group">
                 <select aria-label="Position Interested In">
-                  <option value="">I’m Interested In</option>
+                  <option value="">I'm Interested In</option>
                   <option value="Behavior Interventionist">Behavior Interventionist</option>
                 </select>
                 <div className="file-upload">

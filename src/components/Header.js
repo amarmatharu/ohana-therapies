@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../assets/css/style.css";
 import logo from "../assets/images/logo.png";
 import call_top from "../assets/images/call-top.svg";
@@ -9,23 +9,35 @@ import WaitlistButton from "./WaitlistButton";
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const isWaitlistPage = location.pathname === "/waitlist";
 
   const handleScroll = (event, sectionId) => {
     event.preventDefault();
-    if (location.pathname !== "/") {
-      window.location.href = "/";
-      setTimeout(() => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          section.scrollIntoView({ behavior: "smooth" });
-        }
-      }, 800);
-    } else {
+    const headerHeight = document.getElementById('header_wrapper')?.offsetHeight || 0;
+    const scrollOffset = headerHeight + 10; // Reduced padding for more precise positioning
+
+    const scrollToSection = () => {
       const section = document.getElementById(sectionId);
       if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
+        const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - scrollOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
       }
+    };
+
+    if (location.pathname !== "/") {
+      navigate("/", { replace: true });
+      // Use requestAnimationFrame for smoother transition
+      requestAnimationFrame(() => {
+        setTimeout(scrollToSection, 100);
+      });
+    } else {
+      scrollToSection();
     }
   };
 
@@ -47,7 +59,6 @@ const Header = () => {
             {!isWaitlistPage && (
             <WaitlistButton />  
             )}
-            
           </div>
         </div>
       </div>

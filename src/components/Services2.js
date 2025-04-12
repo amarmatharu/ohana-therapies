@@ -1,68 +1,104 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import SEO from './SEO';
 import '../assets/css/style.css';
-import servise_box from '../assets/images/servise_box.png';
-import heart from '../assets/images/heart.png';
+import subtract from '../assets/images/Subtract.png';
+import services2Image from '../assets/images/services_2.png';
 
-const Services2 = () => (
-  <section className="page-section" id="service_2_sec">
-    <Helmet>
-      <title>Specialized Services - Ohana Therapies</title>
-      <meta name="description" content="Discover our specialized services at Ohana Therapies, including social skills, communication, and behavior support." />
-    </Helmet>
-    <div className="container">
-      <div className="shape_bg">
-        <img src={servise_box} alt="Decorative background shape" loading="lazy" />
+const Services2 = () => {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "ABA Therapy Programs",
+    "description": "Specialized ABA therapy programs focusing on social skills, communication, and behavior management.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Ohana Therapies",
+      "sameAs": "https://ohanatherapies.com"
+    },
+    "areaServed": {
+      "@type": "City",
+      "name": "Santa Clara",
+      "containedInPlace": {
+        "@type": "State",
+        "name": "California"
+      }
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Specialized ABA Programs",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Social Skills Development",
+            "description": "Programs designed to enhance social interaction and communication skills"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Behavior Management",
+            "description": "Strategies and techniques for managing challenging behaviors"
+          }
+        }
+      ]
+    }
+  };
+
+  return (
+    <section className="page-section" id="services2_sec">
+      <SEO
+        title="Specialized ABA Programs | Ohana Therapies"
+        description="Explore our specialized ABA therapy programs focusing on social skills development and behavior management in Santa Clara, CA."
+        keywords="ABA programs, social skills therapy, behavior management, specialized therapy, Santa Clara ABA"
+        structuredData={structuredData}
+        image={services2Image}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://ohanatherapies.com' },
+          { name: 'Services', url: 'https://ohanatherapies.com/#service_sec' },
+          { name: 'Specialized Programs', url: 'https://ohanatherapies.com/#services2_sec' }
+        ]}
+      />
+      <div className="container">
+        <div className="cm_sec_ttile">
+          <div className="sec_ttile">
+            <h1 className="sec_titel_text">SPECIALIZED PROGRAMS</h1>
+            <img src={subtract} alt="Decorative separator" loading="lazy" />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-md-6 col-12">
+            <div className="service_img">
+              <img 
+                src={services2Image} 
+                alt="Child participating in social skills therapy" 
+                width="600" 
+                height="400"
+                loading="lazy"
+              />
+            </div>
+          </div>
+          <div className="col-md-6 col-12">
+            <div className="service_content_wrap">
+              <h2 className="service_content_title">Our Specialized Programs</h2>
+              <p className="service_dummy_content">
+                We offer targeted programs designed to address specific developmental needs and challenges.
+              </p>
+              <ul className="service_list">
+                <li>Social Skills Development</li>
+                <li>Communication Enhancement</li>
+                <li>Behavior Management</li>
+                <li>School Readiness</li>
+                <li>Life Skills Training</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <div className="service_2_content">
-        <div className="media_content">
-          <div className="media_img">
-            <img src={heart} alt="Social skills icon" loading="lazy" />
-          </div>
-          <div className="media_boby">
-            <h2 className="media_title">Social Skills</h2>
-            <p className="media_text">We help your child develop foundational skills for meaningful social interactions.</p>
-          </div>
-        </div>
-        <div className="media_content">
-          <div className="media_img">
-            <img src={heart} alt="Communication icon" loading="lazy" />
-          </div>
-          <div className="media_boby">
-            <h2 className="media_title">Communication</h2>
-            <p className="media_text">We work with children to enhance functional language, communication, and instruction-following skills.</p>
-          </div>
-        </div>
-        <div className="media_content">
-          <div className="media_img">
-            <img src={heart} alt="Adaptive skills icon" loading="lazy" />
-          </div>
-          <div className="media_boby">
-            <h2 className="media_title">Adaptive Skills</h2>
-            <p className="media_text">We teach essential daily living skills to increase independence at home, school, and in the community.</p>
-          </div>
-        </div>
-        <div className="media_content">
-          <div className="media_img">
-            <img src={heart} alt="Focus skills icon" loading="lazy" />
-          </div>
-          <div className="media_boby">
-            <h2 className="media_title">Focus</h2>
-            <p className="media_text">Our strategies help children maintain focus and attention on tasks effectively.</p>
-          </div>
-        </div>
-        <div className="media_content">
-          <div className="media_img">
-            <img src={heart} alt="Behavior support icon" loading="lazy" />
-          </div>
-          <div className="media_boby">
-            <h2 className="media_title">Behavior Support</h2>
-            <p className="media_text">We provide resources and strategies to address behaviors and support families during challenging situations.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Services2;

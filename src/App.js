@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -13,6 +14,24 @@ import Waitlist from "./components/waitlist";
 function App() {
   return (
     <Router>
+      <Helmet>
+        {/* Performance Optimizations */}
+        <link rel="preconnect" href="https://www.facebook.com" />
+        <link rel="preconnect" href="https://www.linkedin.com" />
+        <link rel="dns-prefetch" href="https://www.facebook.com" />
+        <link rel="dns-prefetch" href="https://www.linkedin.com" />
+        
+        {/* Mobile Web App Meta Tags */}
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Ohana Therapies" />
+        
+        {/* iOS App Links */}
+        <meta property="al:ios:url" content="ohanatherapies://app" />
+        <meta property="al:ios:app_store_id" content="123456789" />
+        <meta property="al:ios:app_name" content="Ohana Therapies" />
+      </Helmet>
       <div className="light-mode">
         <div className="main_wrapper">
           <Routes>
