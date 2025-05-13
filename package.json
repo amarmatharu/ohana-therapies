@@ -2,6 +2,10 @@
   "name": "ohana-therapies",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "18.x",
+    "npm": "10.x"
+  },
   "dependencies": {
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
@@ -21,9 +25,16 @@
     "react-native": "0.71.8",
     "react-native-safe-area-context": "4.5.0",
     "react-native-screens": "~3.20.0",
-    "react-router-dom": "^7.0.1",
+    "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
+    "typescript": "~4.9.5",
     "web-vitals": "^2.1.4"
+  },
+  "resolutions": {
+    "typescript": "~4.9.5"
+  },
+  "overrides": {
+    "typescript": "~4.9.5"
   },
   "scripts": {
     "start": "react-scripts start",
