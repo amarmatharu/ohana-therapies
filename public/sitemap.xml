@@ -19,14 +19,6 @@
     <priority>0.95</priority>
   </url>
   
-  <!-- Quiz Page - Important for Engagement -->
-  <url>
-    <loc>https://ohanatherapies.com/quiz</loc>
-    <lastmod>2025-11-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  
   <!-- About Section -->
   <url>
     <loc>https://ohanatherapies.com/#about_sec</loc>

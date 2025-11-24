@@ -11,7 +11,6 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isWaitlistPage = location.pathname === "/waitlist";
-  const isQuizPage = location.pathname === "/quiz";
 
   const handleScroll = (event, sectionId) => {
     event.preventDefault();
@@ -56,11 +55,8 @@ const Header = () => {
             <a href="mailto:info@ohanatherapies.com" aria-label="Email Ohana Therapies">
               <img src={email_top} alt="Email Icon" loading="lazy" /> info@ohanatherapies.com
             </a>
-            {!isWaitlistPage && !isQuizPage && (
+            {!isWaitlistPage && (
               <div className="header-buttons">
-                <Link to="/quiz" className="quiz-link">
-                  ASSESSMENT QUIZ
-                </Link>
                 <WaitlistButton />
               </div>
             )}
@@ -73,7 +69,7 @@ const Header = () => {
             <img src={logo} alt="Ohana Therapies Logo" loading="lazy" />
           </Link>
         </div>
-        {!isWaitlistPage && !isQuizPage && (
+        {!isWaitlistPage && (
           <nav className="menu_item_wrap menu_block" aria-label="Main Navigation">
             <ul className="inn_menu">
               <li className="menu_item">

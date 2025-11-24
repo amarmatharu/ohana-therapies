@@ -10,7 +10,6 @@ import Careers from "./components/Careers";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Waitlist from "./components/waitlist";
-import TherapyQuiz from "./components/TherapyQuiz";
 import '../src/assets/css/style.css';
 import '../src/assets/css/bootstrap.min.css';
 import '../src/assets/css/responsive.css';
@@ -65,17 +64,6 @@ function App() {
                 <>
                   <Header />
                   <Waitlist />
-                </>
-              }
-            />
-
-            {/* Quiz Page - Shows ONLY Header and TherapyQuiz */}
-            <Route
-              path="/quiz"
-              element={
-                <>
-                  <Header />
-                  <TherapyQuiz />
                 </>
               }
             />

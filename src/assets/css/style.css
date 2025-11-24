@@ -1024,7 +1024,7 @@ input::-webkit-inner-spin-button {
   margin-left: 20px;
 }
 
-.quiz-link, .waitlist-button {
+.waitlist-button {
   padding: 5px 12px;
   border-radius: 4px;
   font-weight: 600;
@@ -1032,25 +1032,6 @@ input::-webkit-inner-spin-button {
   text-decoration: none;
   white-space: nowrap;
   font-size: 14px;
-}
-
-.quiz-link {
-  background: #4CAF50;
-  color: white !important;
-  padding: 8px 15px;
-  border-radius: 4px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  white-space: nowrap;
-  font-size: 14px;
-  min-width: 150px;
-  text-align: center;
-}
-
-.quiz-link:hover {
-  background: #45a049;
-  transform: translateY(-2px);
 }
 
 .waitlist-button .cm_btn {
