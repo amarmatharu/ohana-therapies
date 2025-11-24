@@ -17,20 +17,39 @@ const Services = () => {
     "@context": "https://schema.org",
     "@type": "Service",
     "name": "ABA Therapy Services",
-    "description": "Comprehensive Applied Behavior Analysis therapy services for children and families in Santa Clara, CA.",
+    "description": "Comprehensive Applied Behavior Analysis therapy services for children and families in San Jose, Santa Clara, and the Bay Area, CA.",
     "provider": {
       "@type": "Organization",
       "name": "Ohana Therapies",
       "sameAs": "https://ohanatherapies.com"
     },
-    "areaServed": {
-      "@type": "City",
-      "name": "Santa Clara",
-      "containedInPlace": {
-        "@type": "State",
-        "name": "California"
+    "serviceType": "Applied Behavior Analysis (ABA) Therapy",
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "San Jose",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "California"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Santa Clara",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "California"
+        }
+      },
+      {
+        "@type": "Place",
+        "name": "Bay Area",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "California"
+        }
       }
-    },
+    ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "ABA Therapy Services",
@@ -39,15 +58,23 @@ const Services = () => {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "In-Home ABA Therapy",
-            "description": "Personalized ABA therapy sessions conducted in the comfort of your home"
+            "name": "In-Home ABA Therapy San Jose",
+            "description": "Personalized ABA therapy sessions conducted in the comfort of your home in San Jose and Santa Clara"
           }
         },
         {
           "@type": "Offer",
           "itemOffered": {
             "@type": "Service",
-            "name": "Family Training",
+            "name": "Autism Therapy Services",
+            "description": "Expert autism spectrum disorder therapy and behavioral support"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Family Training & Support",
             "description": "Comprehensive training for families to support their child's development"
           }
         }
@@ -58,9 +85,9 @@ const Services = () => {
   return (
     <section className="page-section" id="service_sec">
       <SEO
-        title="ABA Therapy Services | Ohana Therapies"
-        description="Discover our comprehensive ABA therapy services, including in-home therapy and family training programs in Santa Clara, CA."
-        keywords="ABA therapy services, in-home therapy, family training, behavioral therapy, Santa Clara ABA"
+        title="ABA Therapy Services San Jose & Santa Clara | In-Home Autism Therapy | Ohana"
+        description="Expert ABA therapy services in San Jose and Santa Clara. In-home autism therapy, family training programs, behavioral support. Insurance accepted. Serving the Bay Area."
+        keywords="ABA therapy services San Jose, in-home therapy Santa Clara, family training ABA, behavioral therapy San Jose, autism services Santa Clara, ABA provider Bay Area, applied behavior analysis San Jose"
         structuredData={structuredData}
         image={services_1}
         breadcrumbs={[
@@ -93,14 +120,15 @@ const Services = () => {
           <div className="col-md-6 col-12 order-md-1">
             <div className="service_content">
               <h3 className="service_title">Where are the services provided:</h3>
-              <h6 className="service_sub">We come to you!</h6>
+              <h6 className="service_sub">We come to you in San Jose & Santa Clara!</h6>
               <p className="service_text">
-                Your Ohana Therapist meets you where you are- whether it's caregiver's home, or a
-                typically attended setting, such as a preschool or daycare, we work around your busy
-                schedule and provide care in your
+                Your Ohana Therapist meets you where you are throughout San Jose, Santa Clara, and the Bay Area - whether it's caregiver's home, or a
+                typically attended setting, such as a preschool or daycare. We work around your busy
+                schedule and provide in-home ABA therapy care in your
                 own home, where your child feels the most comfortable.
               </p>
               <p className="service_text">
+                Serving families across San Jose, Santa Clara, and surrounding communities with compassionate, expert autism therapy services.
               </p>
             </div>
           </div>

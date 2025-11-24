@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Card, CardContent } from "../components/ui/card";
 import { Button } from "../components/ui/button";
-import { Input } from "../components/ui/input";
 import { Plus } from "lucide-react";
+import SEO from "./SEO";
 import config from '../config';
 import axios from "axios";
 import '../assets/css/style.css';
@@ -19,7 +19,6 @@ export default function Waitlist() {
   const [position, setPosition] = useState(null);
   const [waitlistSize, setWaitlistSize] = useState(0);
   const [estimatedWaitTime, setEstimatedWaitTime] = useState("");
-  const [showForm, setShowForm] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -79,7 +78,6 @@ export default function Waitlist() {
     setLocation("");
     setEmail("");
     setPhoneNumber("");
-    setShowForm(false);
 
       // Show toast message
       setShowToast(true);
@@ -95,32 +93,95 @@ export default function Waitlist() {
   setIsOpen(false);
   };
 
-  return (
-    <div className="p-6 max-w-2xl mx-auto bg-gray-100 rounded-lg shadow-lg mt-10 relative">
+  // Structured Data for Waitlist Page
+  const waitlistStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "name": "Ohana Therapies Waitlist",
+    "description": "Join the waitlist for ABA therapy services in San Jose and Santa Clara. Expert autism therapy, in-home ABA services, and family support programs.",
+    "url": "https://ohanatherapies.com/waitlist",
+    "medicalSpecialty": "Applied Behavior Analysis",
+    "availableService": [
+      {
+        "@type": "MedicalTherapy",
+        "name": "ABA Therapy for Autism",
+        "description": "Comprehensive applied behavior analysis therapy for children with autism spectrum disorder in San Jose and Santa Clara"
+      },
+      {
+        "@type": "MedicalTherapy",
+        "name": "In-Home Autism Therapy",
+        "description": "Personalized in-home ABA therapy services throughout the Bay Area"
+      }
+    ],
+    "areaServed": [
+      {
+        "@type": "City",
+        "name": "San Jose",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "California"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Santa Clara",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "California"
+        }
+      }
+    ]
+  };
 
-      {/* Toast Notification */}
-      {showToast && (
-        <div className="fixed top-5 right-5 bg-green-500 py-3 px-5 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out opacity-100">
-          Successfully added to the waitlist!
+  return (
+    <>
+      <SEO
+        title="Join Waitlist - ABA Therapy San Jose & Santa Clara | Ohana Therapies"
+        description="Join our waitlist for expert ABA therapy services in San Jose and Santa Clara, CA. In-home autism therapy, family training, and personalized care. Insurance accepted."
+        keywords="ABA therapy waitlist San Jose, autism therapy Santa Clara, join ABA waitlist, ABA provider San Jose, autism services waitlist, in-home therapy Bay Area, ABA therapy enrollment"
+        structuredData={waitlistStructuredData}
+        breadcrumbs={[
+          { name: 'Home', url: 'https://ohanatherapies.com' },
+          { name: 'Waitlist', url: 'https://ohanatherapies.com/waitlist' }
+        ]}
+      />
+      
+      <div className="p-6 max-w-2xl mx-auto bg-gray-100 rounded-lg shadow-lg mt-10 relative">
+
+        {/* Toast Notification */}
+        {showToast && (
+          <div className="fixed top-5 right-5 bg-green-500 py-3 px-5 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out opacity-100">
+            Successfully added to the waitlist!
+          </div>
+        )}
+        
+        {errorMessage && (
+          <div className="text-red-500 text-center font-semibold mb-4">{errorMessage}</div>
+        )}
+        
+        {/* Location-Specific Header */}
+        <div className="text-center mb-6">
+          <h1 className="text-3xl font-bold text-blue-800 mb-2">ABA Therapy Waitlist</h1>
+          <p className="text-gray-700 text-lg">
+            Serving San Jose, Santa Clara & the Bay Area
+          </p>
+          <p className="text-gray-600 mt-2">
+            Expert autism therapy services, in-home ABA therapy, and family support programs
+          </p>
         </div>
-      )}
-      
-      {errorMessage && (
-        <div className="text-red-500 text-center font-semibold mb-4">{errorMessage}</div>
-      )}
-      
-      <Card className="bg-white rounded-lg shadow-md p-6">
-        <CardContent className="p-4">
-          <h2 className="text-2xl font-bold mb-4 text-center text-blue-700">Current Waitlist</h2>
-          <p className="text-center text-gray-600">📌 <strong>{waitlistSize}</strong> people are currently on the waitlist.</p>
-          <p className="text-center text-gray-600 mt-2">⏳ {estimatedWaitTime}</p>
-        </CardContent>
-        <div className="mt-6 flex justify-center">
-        <Button onClick={() => setIsOpen(true)} className="add-details-button">
-          <Plus className="mr-2 text-white" size={20} /> <span className="">Add to Waitlist</span>
-        </Button>
-      </div>
-      </Card>
+        
+        <Card className="bg-white rounded-lg shadow-md p-6">
+          <CardContent className="p-4">
+            <h2 className="text-2xl font-bold mb-4 text-center text-blue-700">Current Waitlist</h2>
+            <p className="text-center text-gray-600">📌 <strong>{waitlistSize}</strong> people are currently on the waitlist.</p>
+            <p className="text-center text-gray-600 mt-2">⏳ {estimatedWaitTime}</p>
+          </CardContent>
+          <div className="mt-6 flex justify-center">
+          <Button onClick={() => setIsOpen(true)} className="add-details-button">
+            <Plus className="mr-2 text-white" size={20} /> <span className="">Add to Waitlist</span>
+          </Button>
+        </div>
+        </Card>
       
            
       {isOpen && (
@@ -184,6 +245,7 @@ export default function Waitlist() {
           </div>
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 }

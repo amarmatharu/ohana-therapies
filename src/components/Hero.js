@@ -12,13 +12,13 @@ const Hero = () => {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Ohana Therapies - ABA Therapy Services",
-    "description": "Empowering families through personalized Applied Behavior Analysis therapy in Santa Clara, CA.",
+    "name": "Ohana Therapies - ABA Therapy Services in San Jose & Santa Clara",
+    "description": "Empowering families through personalized Applied Behavior Analysis therapy in San Jose, Santa Clara, and the Bay Area, CA.",
     "url": "https://ohanatherapies.com",
     "mainEntity": {
       "@type": "Organization",
       "name": "Ohana Therapies",
-      "description": "A leading ABA therapy provider committed to family-centered care",
+      "description": "Leading ABA therapy provider serving San Jose and Santa Clara with family-centered care",
       "url": "https://ohanatherapies.com",
       "logo": "https://ohanatherapies.com/logo.png",
       "sameAs": [
@@ -29,13 +29,39 @@ const Hero = () => {
         "@type": "PostalAddress",
         "addressLocality": "Santa Clara",
         "addressRegion": "CA",
+        "postalCode": "95050",
         "addressCountry": "US"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "San Jose",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Santa Clara",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        }
+      ],
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "37.3382",
+        "longitude": "-121.8863"
       },
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
         "telephone": "+1-408-123-4567",
-        "email": "info@ohanatherapies.com"
+        "email": "info@ohanatherapies.com",
+        "areaServed": ["San Jose", "Santa Clara", "Bay Area"],
+        "availableLanguage": "English"
       }
     }
   };
@@ -43,9 +69,9 @@ const Hero = () => {
   return (
     <section id="hero_sec">
       <SEO
-        title="Ohana Therapies | ABA Therapy Services in Santa Clara"
-        description="Empowering families through personalized Applied Behavior Analysis therapy. Join our waitlist for compassionate, family-centered care."
-        keywords="ABA therapy, autism therapy, behavioral therapy, Santa Clara therapy, family-centered care"
+        title="ABA Therapy San Jose & Santa Clara | Ohana Therapies | Autism Services"
+        description="Leading ABA therapy provider in San Jose and Santa Clara, CA. Expert autism therapy, in-home ABA services, family-centered care. Insurance accepted. Join our waitlist today."
+        keywords="ABA therapy San Jose, ABA therapy Santa Clara, autism therapy San Jose, autism services Santa Clara, applied behavior analysis Bay Area, in-home ABA therapy, behavioral therapy San Jose, family-centered autism care, ABA provider San Jose"
         structuredData={structuredData}
         image={hero1}
         breadcrumbs={[
@@ -57,8 +83,8 @@ const Hero = () => {
           <div className="hero_content_wrap">
             <h1 className="hero_title">No family should have to <span>do it alone</span></h1>
             <p className="hero_detail">
-              Team Ohana is passionate about supporting and empowering families to create meaningful changes
-              through In-home Applied Behavior Analysis, individualized for each of our family's needs.
+              Team Ohana is passionate about supporting and empowering families in San Jose, Santa Clara, and throughout the Bay Area to create meaningful changes
+              through In-home Applied Behavior Analysis (ABA) therapy, individualized for each of our family's needs.
             </p>
             <div className="hero_social">
               <h2 className="hero_social_title">Follow Us:</h2>
