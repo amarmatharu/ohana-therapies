@@ -10,66 +10,78 @@ import Careers from "./components/Careers";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Waitlist from "./components/waitlist";
+import usePageTracking from "./hooks/usePageTracking";
 import '../src/assets/css/style.css';
 import '../src/assets/css/bootstrap.min.css';
 import '../src/assets/css/responsive.css';
 
+function AppContent() {
+  // Track page views on route changes
+  usePageTracking();
+
+  return (
+    <>
+    <Helmet>
+      {/* Performance Optimizations */}
+      <link rel="preconnect" href="https://www.facebook.com" />
+      <link rel="preconnect" href="https://www.linkedin.com" />
+      <link rel="dns-prefetch" href="https://www.facebook.com" />
+      <link rel="dns-prefetch" href="https://www.linkedin.com" />
+      
+      {/* Mobile Web App Meta Tags */}
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="Ohana Therapies" />
+      
+      {/* iOS App Links */}
+      <meta property="al:ios:url" content="ohanatherapies://app" />
+      <meta property="al:ios:app_store_id" content="123456789" />
+      <meta property="al:ios:app_name" content="Ohana Therapies" />
+    </Helmet>
+    <div className="light-mode">
+      <div className="main_wrapper">
+        <Routes>
+          {/* Home Page - Shows Everything */}
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <div className="main_content">
+                  <Hero />
+                  <About />
+                  <Services />
+                  <Services2 />
+                  <Careers />
+                  <Contact />
+                </div>
+                <Footer />
+              </>
+            }
+          />
+
+          {/* Waitlist Page - Shows ONLY Header and Waitlist */}
+          <Route
+            path="/waitlist"
+            element={
+              <>
+                <Header />
+                <Waitlist />
+              </>
+            }
+          />
+        </Routes>
+      </div>
+    </div>
+    </>
+  );
+}
+
 function App() {
   return (
     <Router>
-      <Helmet>
-        {/* Performance Optimizations */}
-        <link rel="preconnect" href="https://www.facebook.com" />
-        <link rel="preconnect" href="https://www.linkedin.com" />
-        <link rel="dns-prefetch" href="https://www.facebook.com" />
-        <link rel="dns-prefetch" href="https://www.linkedin.com" />
-        
-        {/* Mobile Web App Meta Tags */}
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Ohana Therapies" />
-        
-        {/* iOS App Links */}
-        <meta property="al:ios:url" content="ohanatherapies://app" />
-        <meta property="al:ios:app_store_id" content="123456789" />
-        <meta property="al:ios:app_name" content="Ohana Therapies" />
-      </Helmet>
-      <div className="light-mode">
-        <div className="main_wrapper">
-          <Routes>
-            {/* Home Page - Shows Everything */}
-            <Route
-              path="/"
-              element={
-                <>
-                  <Header />
-                  <div className="main_content">
-                    <Hero />
-                    <About />
-                    <Services />
-                    <Services2 />
-                    <Careers />
-                    <Contact />
-                  </div>
-                  <Footer />
-                </>
-              }
-            />
-
-            {/* Waitlist Page - Shows ONLY Header and Waitlist */}
-            <Route
-              path="/waitlist"
-              element={
-                <>
-                  <Header />
-                  <Waitlist />
-                </>
-              }
-            />
-          </Routes>
-        </div>
-      </div>
+      <AppContent />
     </Router>
   );
 }
