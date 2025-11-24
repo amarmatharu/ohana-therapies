@@ -19,8 +19,9 @@ export default function Waitlist() {
   const [position, setPosition] = useState(null);
   const [waitlistSize, setWaitlistSize] = useState(0);
   const [estimatedWaitTime, setEstimatedWaitTime] = useState("");
-  const [showToast, setShowToast] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   useEffect(() => {
     fetchWaitlistData();
@@ -57,40 +58,61 @@ export default function Waitlist() {
   };
 
   const handleSignup = async (event) => {
-    event.preventDefault(); // Prevent form refresh
+    event.preventDefault();
     setErrorMessage("");
+    setIsSubmitting(true);
     
+    // Validate email
     if (!validateEmail(email)) {
-      setErrorMessage("Invalid email format");
+      setErrorMessage("Please enter a valid email address");
+      setIsSubmitting(false);
+      return;
+    }
+    
+    // Validate phone number
+    if (phoneNumber && phoneNumber.replace(/\D/g, '').length < 10) {
+      setErrorMessage("Please enter a valid 10-digit phone number");
+      setIsSubmitting(false);
       return;
     }
     
     const formattedPhone = formatPhoneNumber(phoneNumber);
     
     try {
-      const response = await axios.post(`${config.baseUrl}/api/waitlist`, { name, age: age ? parseInt(age, 10) : 0,  location, insurance,email, phoneNumber: formattedPhone });
+      const response = await axios.post(`${config.baseUrl}/api/waitlist`, { 
+        name, 
+        age: age ? parseInt(age, 10) : 0,  
+        location, 
+        insurance,
+        email, 
+        phoneNumber: formattedPhone 
+      });
+      
       setPosition(response.data.position);
-      fetchWaitlistData();
-    // ✅ Reset form fields after submission
-    setName("");
-    setAge("");
-    setInsurance("");
-    setLocation("");
-    setEmail("");
-    setPhoneNumber("");
-
-      // Show toast message
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000); // Hide after 3 sec
+      await fetchWaitlistData();
+      
+      // Reset form fields
+      setName("");
+      setAge("");
+      setInsurance("");
+      setLocation("");
+      setEmail("");
+      setPhoneNumber("");
+      
+      // Close form modal and show success modal
+      setIsOpen(false);
+      setShowSuccessModal(true);
+      
     } catch (error) {
       if (error.response && error.response.status === 409) {
         setErrorMessage("This email is already registered on the waitlist.");
       } else {
+        setErrorMessage("Something went wrong. Please try again or contact us directly.");
         console.error("Error signing up", error);
       }
+    } finally {
+      setIsSubmitting(false);
     }
-      // Close the popup
-  setIsOpen(false);
   };
 
   // Structured Data for Waitlist Page
@@ -147,17 +169,6 @@ export default function Waitlist() {
       />
       
       <div className="p-6 max-w-2xl mx-auto bg-gray-100 rounded-lg shadow-lg mt-10 relative">
-
-        {/* Toast Notification */}
-        {showToast && (
-          <div className="fixed top-5 right-5 bg-green-500 py-3 px-5 rounded-lg shadow-lg z-50 transition-opacity duration-500 ease-in-out opacity-100">
-            Successfully added to the waitlist!
-          </div>
-        )}
-        
-        {errorMessage && (
-          <div className="text-red-500 text-center font-semibold mb-4">{errorMessage}</div>
-        )}
         
         {/* Location-Specific Header */}
         <div className="text-center mb-6">
@@ -173,21 +184,32 @@ export default function Waitlist() {
         <Card className="bg-white rounded-lg shadow-md p-6">
           <CardContent className="p-4">
             <h2 className="text-2xl font-bold mb-4 text-center text-blue-700">Current Waitlist</h2>
-            <p className="text-center text-gray-600">📌 <strong>{waitlistSize}</strong> people are currently on the waitlist.</p>
-            <p className="text-center text-gray-600 mt-2">⏳ {estimatedWaitTime}</p>
+            <p className="text-center text-gray-600 text-lg">📌 <strong>{waitlistSize}</strong> {waitlistSize === 1 ? 'family is' : 'families are'} currently on the waitlist.</p>
+            <p className="text-center text-gray-600 mt-2 text-lg">⏳ {estimatedWaitTime}</p>
+            
+            {/* What to Expect Section */}
+            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+              <h3 className="font-semibold text-gray-800 mb-2">What happens after you join?</h3>
+              <ul className="text-sm text-gray-700 space-y-2">
+                <li>✓ You'll receive a confirmation email with your position</li>
+                <li>✓ Our team will contact you within 2-3 business days</li>
+                <li>✓ We'll discuss your child's needs and insurance coverage</li>
+                <li>✓ You'll be notified when a therapy slot becomes available</li>
+              </ul>
+            </div>
           </CardContent>
           <div className="mt-6 flex justify-center">
-          <Button onClick={() => setIsOpen(true)} className="add-details-button">
-            <Plus className="mr-2 text-white" size={20} /> <span className="">Add to Waitlist</span>
-          </Button>
-        </div>
+            <Button onClick={() => setIsOpen(true)} className="add-details-button">
+              <Plus className="mr-2 text-white" size={20} /> <span className="">Join Waitlist Now</span>
+            </Button>
+          </div>
         </Card>
       
            
       {isOpen && (
           <div className="popup-form-container">
           <div className="popup-form">
-            <span className="close-btn" onClick={() => setIsOpen(false)}>&times;</span>
+            <span className="close-btn" onClick={() => !isSubmitting && setIsOpen(false)}>&times;</span>
             <div className="container">
               <div className="cm_sec_ttile">
                 <div className="sec_ttile">
@@ -195,52 +217,154 @@ export default function Waitlist() {
                   <img src={subtract} alt="Decorative separator" loading="lazy" />
                 </div>
               </div>
+              
+              {errorMessage && (
+                <div className="text-red-600 bg-red-50 border border-red-200 rounded-lg p-3 mb-4 text-center">
+                  {errorMessage}
+                </div>
+              )}
+              
               <div className="d-flex justify-content-center align-items-center bg-light">
                 <div className="col-md-6 col-12">
                   <div className="contact_form_wrap">
                     <form onSubmit={handleSignup}>
                       <div className="cn_input_waitlist input_group">
-                        <input type="text" placeholder="Enter your name" value={name} onChange={(e) => setName(e.target.value)} required />
+                        <label className="text-sm text-gray-600 mb-1 block">Parent/Guardian Name *</label>
+                        <input 
+                          type="text" 
+                          placeholder="Enter your full name" 
+                          value={name} 
+                          onChange={(e) => setName(e.target.value)} 
+                          disabled={isSubmitting}
+                          required 
+                        />
                       </div>
+                      
                       <div className="cn_input input_group">
-                        <select placeholder="Enter your child's age" value={age} onChange={(e) => setAge(e.target.value ? parseInt(e.target.value, 10) : 0)} required >
-                           <option value="3">Select child's age:</option>
-                           <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            </select>
-
+                        <label className="text-sm text-gray-600 mb-1 block">Child's Age *</label>
+                        <select 
+                          value={age} 
+                          onChange={(e) => setAge(e.target.value)} 
+                          disabled={isSubmitting}
+                          required
+                        >
+                          <option value="">Select your child's age</option>
+                          <option value="3">3 years old</option>
+                          <option value="4">4 years old</option>
+                          <option value="5">5 years old</option>
+                          <option value="6">6 years old</option>
+                          <option value="7">7 years old</option>
+                          <option value="8">8 years old</option>
+                          <option value="9">9 years old</option>
+                          <option value="10">10 years old</option>
+                          <option value="11">11 years old</option>
+                          <option value="12">12 years old</option>
+                          <option value="13">13 years old</option>
+                          <option value="14">14 years old</option>
+                          <option value="15">15 years old</option>
+                        </select>
                       </div>
+                      
                       <div className="cn_input_waitlist">
-                        <input type="text" placeholder="Enter your insurance provider" value={insurance} onChange={(e) => setInsurance(e.target.value)} required />
+                        <label className="text-sm text-gray-600 mb-1 block">Insurance Provider *</label>
+                        <input 
+                          type="text" 
+                          placeholder="e.g., Blue Shield, Kaiser, Medi-Cal" 
+                          value={insurance} 
+                          onChange={(e) => setInsurance(e.target.value)} 
+                          disabled={isSubmitting}
+                          required 
+                        />
                       </div>
+                      
                       <div className="cn_input_waitlist">
-                        <input type="text" placeholder="Enter your location" value={location} onChange={(e) => setLocation(e.target.value)} required />
+                        <label className="text-sm text-gray-600 mb-1 block">City/Location *</label>
+                        <input 
+                          type="text" 
+                          placeholder="e.g., San Jose, Santa Clara" 
+                          value={location} 
+                          onChange={(e) => setLocation(e.target.value)} 
+                          disabled={isSubmitting}
+                          required 
+                        />
                       </div>
+                      
                       <div className="cn_input_waitlist">
-                        <input type="email" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+                        <label className="text-sm text-gray-600 mb-1 block">Email Address *</label>
+                        <input 
+                          type="email" 
+                          placeholder="your.email@example.com" 
+                          value={email} 
+                          onChange={(e) => setEmail(e.target.value)} 
+                          disabled={isSubmitting}
+                          required 
+                        />
                       </div>
+                      
                       <div className="cn_input_waitlist">
-                        <input type="tel" name="phone" placeholder="Enter your phone number (optional)" value={phoneNumber} onChange={(e) => setPhoneNumber(formatPhoneNumber(e.target.value))} required />
+                        <label className="text-sm text-gray-600 mb-1 block">Phone Number</label>
+                        <input 
+                          type="tel" 
+                          name="phone" 
+                          placeholder="(123) 456-7890" 
+                          value={phoneNumber} 
+                          onChange={(e) => setPhoneNumber(e.target.value)}
+                          disabled={isSubmitting}
+                        />
+                        <small className="text-gray-500 text-xs">Optional - We'll use this to contact you faster</small>
                       </div>
-                      <button className="cn_input_waitlist" type="submit">Send</button>
-                      {position !== null && (
-                        <p className="mt-2 text-center text-green-700 font-semibold">Your position in the waitlist: {position}</p>
-                      )}
+                      
+                      <button 
+                        className="cn_input_waitlist" 
+                        type="submit"
+                        disabled={isSubmitting}
+                        style={{ opacity: isSubmitting ? 0.6 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
+                      >
+                        {isSubmitting ? 'Joining Waitlist...' : 'Join Waitlist'}
+                      </button>
+                      
+                      <p className="text-xs text-gray-500 text-center mt-3">
+                        By submitting this form, you agree to be contacted by Ohana Therapies regarding ABA therapy services.
+                      </p>
                     </form>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="popup-form-container">
+          <div className="popup-form" style={{ maxWidth: '500px' }}>
+            <span className="close-btn" onClick={() => setShowSuccessModal(false)}>&times;</span>
+            <div className="container text-center p-6">
+              <div className="text-green-500 text-6xl mb-4">✓</div>
+              <h2 className="text-2xl font-bold text-gray-800 mb-3">Welcome to Our Waitlist!</h2>
+              <p className="text-lg text-gray-700 mb-4">
+                You're now <strong className="text-blue-600">#{position}</strong> on our waitlist
+              </p>
+              <div className="bg-blue-50 rounded-lg p-4 mb-4 text-left">
+                <h3 className="font-semibold text-gray-800 mb-2">What's Next?</h3>
+                <ul className="text-sm text-gray-700 space-y-2">
+                  <li>✉️ Check your email for a confirmation message</li>
+                  <li>📞 We'll contact you within 2-3 business days</li>
+                  <li>📋 We'll discuss your child's needs and next steps</li>
+                  <li>🎉 You'll be notified when a therapy slot opens</li>
+                </ul>
+              </div>
+              <p className="text-sm text-gray-600 mb-4">
+                Questions? Call us at <strong>(484) 985-0189</strong> or email <strong>info@ohanatherapies.com</strong>
+              </p>
+              <button 
+                className="cm_btn" 
+                onClick={() => setShowSuccessModal(false)}
+                style={{ padding: '12px 30px', fontSize: '16px' }}
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
