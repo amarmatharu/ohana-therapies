@@ -229,10 +229,9 @@ export default function Waitlist() {
                   <div className="contact_form_wrap">
                     <form onSubmit={handleSignup}>
                       <div className="cn_input_waitlist input_group">
-                        <label className="text-sm text-gray-600 mb-1 block">Parent/Guardian Name *</label>
                         <input 
                           type="text" 
-                          placeholder="Enter your full name" 
+                          placeholder="Parent/Guardian Name *" 
                           value={name} 
                           onChange={(e) => setName(e.target.value)} 
                           disabled={isSubmitting}
@@ -241,7 +240,6 @@ export default function Waitlist() {
                       </div>
                       
                       <div className="cn_input input_group">
-                        <label className="text-sm text-gray-600 mb-1 block">Child's Age *</label>
                         <select 
                           value={age} 
                           onChange={(e) => setAge(e.target.value)} 
@@ -266,10 +264,9 @@ export default function Waitlist() {
                       </div>
                       
                       <div className="cn_input_waitlist">
-                        <label className="text-sm text-gray-600 mb-1 block">Insurance Provider *</label>
                         <input 
                           type="text" 
-                          placeholder="e.g., Blue Shield, Kaiser, Medi-Cal" 
+                          placeholder="Insurance Provider (e.g., Blue Shield, Kaiser, Medi-Cal) *" 
                           value={insurance} 
                           onChange={(e) => setInsurance(e.target.value)} 
                           disabled={isSubmitting}
@@ -278,10 +275,9 @@ export default function Waitlist() {
                       </div>
                       
                       <div className="cn_input_waitlist">
-                        <label className="text-sm text-gray-600 mb-1 block">City/Location *</label>
                         <input 
                           type="text" 
-                          placeholder="e.g., San Jose, Santa Clara" 
+                          placeholder="City/Location (e.g., San Jose, Santa Clara) *" 
                           value={location} 
                           onChange={(e) => setLocation(e.target.value)} 
                           disabled={isSubmitting}
@@ -290,10 +286,9 @@ export default function Waitlist() {
                       </div>
                       
                       <div className="cn_input_waitlist">
-                        <label className="text-sm text-gray-600 mb-1 block">Email Address *</label>
                         <input 
                           type="email" 
-                          placeholder="your.email@example.com" 
+                          placeholder="Email Address *" 
                           value={email} 
                           onChange={(e) => setEmail(e.target.value)} 
                           disabled={isSubmitting}
@@ -302,16 +297,14 @@ export default function Waitlist() {
                       </div>
                       
                       <div className="cn_input_waitlist">
-                        <label className="text-sm text-gray-600 mb-1 block">Phone Number</label>
                         <input 
                           type="tel" 
                           name="phone" 
-                          placeholder="(123) 456-7890" 
+                          placeholder="Phone Number (optional - helps us contact you faster)" 
                           value={phoneNumber} 
                           onChange={(e) => setPhoneNumber(e.target.value)}
                           disabled={isSubmitting}
                         />
-                        <small className="text-gray-500 text-xs">Optional - We'll use this to contact you faster</small>
                       </div>
                       
                       <button 
@@ -322,10 +315,6 @@ export default function Waitlist() {
                       >
                         {isSubmitting ? 'Joining Waitlist...' : 'Join Waitlist'}
                       </button>
-                      
-                      <p className="text-xs text-gray-500 text-center mt-3">
-                        By submitting this form, you agree to be contacted by Ohana Therapies regarding ABA therapy services.
-                      </p>
                     </form>
                   </div>
                 </div>
