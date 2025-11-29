@@ -6,7 +6,6 @@ import SEO from "./SEO";
 import config from '../config';
 import axios from "axios";
 import '../assets/css/style.css';
-import subtract from '../assets/images/Subtract.png';
 
 export default function Waitlist() {
   const [isOpen, setIsOpen] = useState(false);
@@ -214,7 +213,6 @@ export default function Waitlist() {
               <div className="cm_sec_ttile">
                 <div className="sec_ttile">
                   <h1 className="sec_titel_text">Join <span>Waitlist</span></h1>
-                  <img src={subtract} alt="Decorative separator" loading="lazy" />
                 </div>
               </div>
               

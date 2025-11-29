@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import '../assets/css/style.css';
-import subtract from '../assets/images/Subtract.png';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -25,7 +24,6 @@ const Contact = () => {
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
             <h1 className="sec_titel_text">Contact <span>Information</span></h1>
-            <img src={subtract} alt="Decorative separator" loading="lazy" />
           </div>
         </div>
         <div className="row">

@@ -1,0 +1,308 @@
+/**************************************************
+ * MODERN CLEAN DESIGN - Remove Dated Elements
+ * Replaces dated graphics with clean, modern design
+ **************************************************/
+
+/* ===========================
+   1. MODERN SECTION TITLES
+   =========================== */
+
+/* Replace separator graphic with clean underline */
+.sec_ttile {
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+}
+
+/* Modern accent line under titles */
+.sec_ttile::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .sec_ttile::after {
+    width: 60px;
+    height: 3px;
+  }
+}
+
+/* ===========================
+   2. CLEAN UP BORDERS
+   =========================== */
+
+/* Softer box shadows instead of heavy borders */
+.card, .Card, .contact_form_wrap, .careers_form {
+  border: none !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 
+              0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Remove harsh borders from inputs */
+input, textarea, select {
+  border: 1px solid #e5e7eb !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: #3b82f6 !important;
+}
+
+/* ===========================
+   3. MODERNIZE BUTTONS
+   =========================== */
+
+/* Remove ALL CAPS from buttons (if you want) */
+.cm_btn, .cn_btn, button[type="submit"] {
+  text-transform: none;
+  font-weight: 600;
+  border-radius: 8px !important;
+  border: none !important;
+}
+
+/* ===========================
+   4. CLEAN UP FORMS
+   =========================== */
+
+/* Modern form inputs with rounded corners */
+input, textarea, select {
+  border-radius: 8px !important;
+  font-size: 15px;
+}
+
+/* Remove harsh borders from form containers */
+.contact_form_wrap, .careers_form {
+  border-radius: 12px;
+}
+
+/* ===========================
+   5. MODERNIZE CARDS/BOXES
+   =========================== */
+
+/* Rounded corners for all card elements */
+.meraki_box, 
+.about_content_wrap,
+.service_content,
+.contact_detail {
+  border-radius: 12px;
+}
+
+/* Softer shadows */
+.meraki_box {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 
+              0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* ===========================
+   6. REMOVE DATED DECORATIVE ELEMENTS
+   =========================== */
+
+/* If there are any other decorative images, make them subtle */
+.service_icon, .right_arrow {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.service_icon:hover, .right_arrow:hover {
+  opacity: 1;
+}
+
+/* ===========================
+   7. MODERNIZE IMAGE CONTAINERS
+   =========================== */
+
+/* Rounded corners for images */
+.service_img img, 
+.hero_img_wrap img,
+.cm_img_wrap img,
+.about_content_wrap img {
+  border-radius: 12px;
+}
+
+.cm_img_wrap {
+  border-radius: 12px;
+}
+
+/* ===========================
+   8. CLEAN UP HEADER
+   =========================== */
+
+/* Softer header background */
+#top_bar {
+  background: #1f2937 !important;  /* Dark gray instead of pure black */
+}
+
+/* ===========================
+   9. MODERN SPACING FOR TITLES
+   =========================== */
+
+.sec_titel_text {
+  margin-bottom: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Remove dated spacing from old separator */
+.sec_ttile img {
+  display: none; /* Ensure any remaining separator images don't show */
+}
+
+/* ===========================
+   10. CLEAN LIST STYLES
+   =========================== */
+
+/* Modern list markers */
+.service_list li::before {
+  content: '✓';
+  color: #10b981;
+  font-weight: bold;
+  margin-right: 12px;
+}
+
+/* ===========================
+   11. SOFTER COLORS OVERALL
+   =========================== */
+
+/* Softer text colors */
+.dummy_text, 
+.about_dummy_content,
+.service_text {
+  color: #4b5563 !important;
+}
+
+/* ===========================
+   12. REMOVE DATED BACKGROUND PATTERNS
+   =========================== */
+
+/* Clean, flat backgrounds */
+.page-section {
+  background: #ffffff;
+}
+
+.page-section:nth-child(even) {
+  background: #f9fafb;  /* Very subtle gray for alternating sections */
+}
+
+/* ===========================
+   13. MODERNIZE SOCIAL ICONS
+   =========================== */
+
+.hero_social a {
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* ===========================
+   14. CLEAN UP WAITLIST MODAL
+   =========================== */
+
+.popup-form {
+  border-radius: 16px !important;
+  border: none !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+}
+
+.popup-form-container {
+  backdrop-filter: blur(4px);
+}
+
+/* ===========================
+   15. MODERN CLOSE BUTTON
+   =========================== */
+
+.close-btn {
+  background: #f3f4f6 !important;
+  border-radius: 50% !important;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.3s ease !important;
+}
+
+.close-btn:hover {
+  background: #e5e7eb !important;
+  transform: rotate(90deg);
+}
+
+/* ===========================
+   16. CLEAN UP SUCCESS STATES
+   =========================== */
+
+.text-green-500, .success-icon {
+  color: #10b981 !important;
+}
+
+.bg-green-500 {
+  background: #10b981 !important;
+}
+
+.text-blue-600, .text-blue-700, .text-blue-800 {
+  color: #2563eb !important;
+}
+
+/* ===========================
+   17. MODERN BADGE/TAG STYLES
+   =========================== */
+
+/* If you have any badges or tags */
+.badge, [class*="badge"] {
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-weight: 500;
+}
+
+/* ===========================
+   18. ACCESSIBILITY - MAINTAIN CONTRAST
+   =========================== */
+
+/* Ensure text remains readable on new backgrounds */
+h1, h2, h3, h4, h5, h6 {
+  color: #1f2937;
+}
+
+p, li {
+  color: #4b5563;
+}
+
+/* ===========================
+   19. REMOVE DATED EFFECTS
+   =========================== */
+
+/* No harsh drop shadows */
+* {
+  text-shadow: none !important;
+}
+
+/* Keep only subtle, modern shadows */
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 
+              0 8px 24px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* ===========================
+   20. RESPONSIVE CLEAN DESIGN
+   =========================== */
+
+@media (max-width: 768px) {
+  /* Ensure modern design scales on mobile */
+  .popup-form {
+    border-radius: 12px !important;
+    margin: 20px !important;
+  }
+  
+  input, textarea, select {
+    border-radius: 6px !important;
+  }
+  
+  .cm_btn, .cn_btn {
+    border-radius: 6px !important;
+  }
+}
+

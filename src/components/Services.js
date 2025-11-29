@@ -7,7 +7,6 @@ import '../assets/js/jquery3.5.1.min.js';
 import '../assets/css/style.css';
 import '../assets/css/bootstrap.min.css';
 import '../assets/css/responsive.css';
-import subtract from '../assets/images/Subtract.png';
 import services_1 from '../assets/images/services_1.png';
 import service_icon from '../assets/images/icon.svg';
 import service_image from '../assets/images/services_2.png';
@@ -99,7 +98,6 @@ const Services = () => {
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
             <h1 className="sec_titel_text">SERVICES</h1>
-            <img src={subtract} alt="Decorative separator" loading="lazy" />
           </div>
         </div>
         <div className="row mt_top_30">

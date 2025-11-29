@@ -1,7 +1,6 @@
 import React from 'react';
 import SEO from './SEO';
 import '../assets/css/style.css';
-import subtract from '../assets/images/Subtract.png';
 import aboutImage from '../assets/images/about_right.png';
 
 const About = () => {
@@ -44,7 +43,6 @@ const About = () => {
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
             <h1 className="sec_titel_text">ABOUT <span>OHANA</span></h1>
-            <img src={subtract} alt="Decorative separator" loading="lazy" />
           </div>
           <p className="dummy_text">
             "Ohana" is a Hawaiian term that means family, in all of its forms: blood-related, adoptive, and chosen.

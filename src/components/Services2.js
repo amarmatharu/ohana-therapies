@@ -1,7 +1,6 @@
 import React from 'react';
 import SEO from './SEO';
 import '../assets/css/style.css';
-import subtract from '../assets/images/Subtract.png';
 import services2Image from '../assets/images/services_2.png';
 
 const Services2 = () => {
@@ -65,7 +64,6 @@ const Services2 = () => {
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
             <h1 className="sec_titel_text">SPECIALIZED PROGRAMS</h1>
-            <img src={subtract} alt="Decorative separator" loading="lazy" />
           </div>
         </div>
         <div className="row">

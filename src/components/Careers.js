@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import '../assets/css/style.css';
-import subtract from '../assets/images/Subtract.png';
 import career_icon from '../assets/images/arrow.png';
 import heart_icon from '../assets/images/heart_1.png';
 import file_uploader from '../assets/images/file_uploader.png';
@@ -16,7 +15,6 @@ const Careers = () => (
       <div className="cm_sec_ttile">
         <div className="sec_ttile">
           <h1 className="sec_titel_text">Careers</h1>
-          <img src={subtract} alt="Decorative separator" loading="lazy" />
         </div>
         <p className="dummy_text">
           Ohana Therapies is founded on the philosophy of providing services with Meraki—doing something with soul, creativity, or love.
