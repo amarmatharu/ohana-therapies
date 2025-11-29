@@ -1,0 +1,269 @@
+/**************************************************
+ * BETTER SPACING - Reduce Excessive Section Gaps
+ * Modern, tighter spacing between sections
+ **************************************************/
+
+/* ===========================
+   1. HERO SECTION
+   =========================== */
+
+#hero_sec {
+  padding: 60px 0 70px !important;
+}
+
+/* ===========================
+   2. OLD INSURANCES SECTION (if exists)
+   =========================== */
+
+#insurances_sec {
+  padding: 80px 0 70px !important;
+}
+
+/* ===========================
+   3. ABOUT SECTION
+   =========================== */
+
+#about_sec {
+  padding: 80px 0 0 !important;
+}
+
+#about_sec .row {
+  margin-top: 50px !important;
+}
+
+/* ===========================
+   4. SERVICES SECTION
+   =========================== */
+
+#service_sec {
+  padding-top: 80px !important;
+  padding-bottom: 60px !important;
+}
+
+/* ===========================
+   5. SPECIALIZED PROGRAMS (Services 2)
+   =========================== */
+
+#service_sec_two {
+  padding-top: 80px !important;
+  padding-bottom: 60px !important;
+}
+
+/* ===========================
+   6. INSURANCE SECTION (NEW)
+   =========================== */
+
+.insurance_section {
+  padding: 70px 0 !important;
+}
+
+/* ===========================
+   7. CAREERS SECTION
+   =========================== */
+
+#careers_sec {
+  padding: 80px 0 70px !important;
+}
+
+#careers_sec .row {
+  margin-top: 50px !important;
+}
+
+/* ===========================
+   8. CONTACT SECTION
+   =========================== */
+
+#contact_info_sec {
+  padding: 80px 0 70px !important;
+}
+
+#contact_info_sec .row {
+  margin-top: 35px !important;
+}
+
+/* ===========================
+   9. FOOTER
+   =========================== */
+
+.modern_footer {
+  margin-top: 60px !important;
+}
+
+/* ===========================
+   10. RESPONSIVE ADJUSTMENTS
+   =========================== */
+
+/* Tablet - Slightly reduce spacing */
+@media (max-width: 992px) {
+  #hero_sec {
+    padding: 50px 0 60px !important;
+  }
+  
+  #about_sec,
+  #service_sec,
+  #service_sec_two,
+  #careers_sec,
+  #contact_info_sec {
+    padding: 60px 0 50px !important;
+  }
+  
+  .insurance_section {
+    padding: 60px 0 !important;
+  }
+  
+  #insurances_sec {
+    padding: 60px 0 50px !important;
+  }
+}
+
+/* Mobile - Even tighter spacing */
+@media (max-width: 768px) {
+  #hero_sec {
+    padding: 40px 0 50px !important;
+  }
+  
+  #about_sec,
+  #service_sec,
+  #service_sec_two,
+  #careers_sec,
+  #contact_info_sec {
+    padding: 50px 0 40px !important;
+  }
+  
+  .insurance_section {
+    padding: 50px 0 !important;
+  }
+  
+  #insurances_sec {
+    padding: 50px 0 40px !important;
+  }
+  
+  #about_sec .row,
+  #careers_sec .row {
+    margin-top: 40px !important;
+  }
+  
+  #contact_info_sec .row {
+    margin-top: 30px !important;
+  }
+  
+  .modern_footer {
+    margin-top: 50px !important;
+  }
+}
+
+/* Small Mobile - Minimal spacing */
+@media (max-width: 576px) {
+  #hero_sec {
+    padding: 35px 0 40px !important;
+  }
+  
+  #about_sec,
+  #service_sec,
+  #service_sec_two,
+  #careers_sec,
+  #contact_info_sec {
+    padding: 40px 0 35px !important;
+  }
+  
+  .insurance_section {
+    padding: 40px 0 !important;
+  }
+  
+  #insurances_sec {
+    padding: 40px 0 35px !important;
+  }
+  
+  .modern_footer {
+    margin-top: 40px !important;
+  }
+}
+
+/* ===========================
+   11. SMOOTH SCROLL
+   =========================== */
+
+html {
+  scroll-padding-top: 80px;
+}
+
+/* ===========================
+   12. SECTION TRANSITIONS
+   =========================== */
+
+#hero_sec,
+#about_sec,
+#service_sec,
+#service_sec_two,
+.insurance_section,
+#careers_sec,
+#contact_info_sec {
+  transition: padding 0.3s ease;
+}
+
+/* ===========================
+   13. FIX FULLHEIGHT SECTIONS ON MOBILE
+   =========================== */
+
+@media (max-width: 992px) {
+  #about_sec,
+  #careers_sec {
+    height: auto !important;
+    min-height: auto !important;
+  }
+}
+
+/* ===========================
+   14. IMPROVE VERTICAL RHYTHM
+   =========================== */
+
+.cm_sec_ttile,
+.sec_ttile {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 768px) {
+  .cm_sec_ttile,
+  .sec_ttile {
+    margin-bottom: 30px;
+  }
+}
+
+/* ===========================
+   15. TIGHTER CONTENT SPACING
+   =========================== */
+
+.dummy_text {
+  margin: 20px auto 0 !important;
+}
+
+.insurances_logo {
+  margin-top: 35px !important;
+}
+
+.careers_content_wrap {
+  margin-top: 60px !important;
+}
+
+@media (max-width: 768px) {
+  .careers_content_wrap {
+    margin-top: 40px !important;
+  }
+}
+
+/* ===========================
+   16. PRINT STYLES
+   =========================== */
+
+@media print {
+  #hero_sec,
+  #about_sec,
+  #service_sec,
+  #service_sec_two,
+  .insurance_section,
+  #careers_sec,
+  #contact_info_sec {
+    padding: 30px 0 !important;
+  }
+}
+

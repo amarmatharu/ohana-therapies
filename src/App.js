@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Services from "./components/Services";
 import Services2 from "./components/Services2";
+import Insurance from "./components/Insurance";
 import Careers from "./components/Careers";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
@@ -18,7 +19,9 @@ import '../src/assets/css/typography.css';
 import '../src/assets/css/polish.css';
 import '../src/assets/css/modern-clean.css';
 import '../src/assets/css/hero-polish.css';
+import '../src/assets/css/insurance.css';
 import '../src/assets/css/modern-footer.css';
+import '../src/assets/css/better-spacing.css';
 
 function AppContent() {
   // Track page views on route changes
@@ -58,6 +61,7 @@ function AppContent() {
                   <About />
                   <Services />
                   <Services2 />
+                  <Insurance />
                   <Careers />
                   <Contact />
                 </div>
