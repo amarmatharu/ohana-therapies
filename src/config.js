@@ -1,6 +1,8 @@
+// Automatically use local backend in development, production API in production
 const config = {
-    baseUrl:'https://api.ohanabehavioralservice.com'  
-   // baseUrl:'http://localhost:8080' 
-  };
-  
-  export default config;
+  baseUrl: process.env.NODE_ENV === 'development' 
+    ? 'http://localhost:8080' 
+    : 'https://api.ohanabehavioralservice.com'
+};
+
+export default config;

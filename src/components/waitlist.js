@@ -191,10 +191,10 @@ export default function Waitlist() {
             <div className="mt-6 p-4 bg-blue-50 rounded-lg">
               <h3 className="font-semibold text-gray-800 mb-2">What happens after you join?</h3>
               <ul className="text-sm text-gray-700 space-y-2">
-                <li>✓ You'll receive a confirmation email with your position</li>
-                <li>✓ Our team will contact you within 2-3 business days</li>
-                <li>✓ We'll discuss your child's needs and insurance coverage</li>
-                <li>✓ You'll be notified when a therapy slot becomes available</li>
+                <li className="stagger-item">✓ You'll receive a confirmation email with your position</li>
+                <li className="stagger-item">✓ Our team will contact you within 2-3 business days</li>
+                <li className="stagger-item">✓ We'll discuss your child's needs and insurance coverage</li>
+                <li className="stagger-item">✓ You'll be notified when a therapy slot becomes available</li>
               </ul>
             </div>
           </CardContent>
@@ -330,7 +330,7 @@ export default function Waitlist() {
           <div className="popup-form" style={{ maxWidth: '500px' }}>
             <span className="close-btn" onClick={() => setShowSuccessModal(false)}>&times;</span>
             <div className="container text-center p-6">
-              <div className="text-green-500 text-6xl mb-4">✓</div>
+              <div className="text-green-500 text-6xl mb-4 success-icon">✓</div>
               <h2 className="text-2xl font-bold text-gray-800 mb-3">Welcome to Our Waitlist!</h2>
               <p className="text-lg text-gray-700 mb-4">
                 You're now <strong className="text-blue-600">#{position}</strong> on our waitlist
@@ -338,10 +338,10 @@ export default function Waitlist() {
               <div className="bg-blue-50 rounded-lg p-4 mb-4 text-left">
                 <h3 className="font-semibold text-gray-800 mb-2">What's Next?</h3>
                 <ul className="text-sm text-gray-700 space-y-2">
-                  <li>✉️ Check your email for a confirmation message</li>
-                  <li>📞 We'll contact you within 2-3 business days</li>
-                  <li>📋 We'll discuss your child's needs and next steps</li>
-                  <li>🎉 You'll be notified when a therapy slot opens</li>
+                  <li className="stagger-item">✉️ Check your email for a confirmation message</li>
+                  <li className="stagger-item">📞 We'll contact you within 2-3 business days</li>
+                  <li className="stagger-item">📋 We'll discuss your child's needs and next steps</li>
+                  <li className="stagger-item">🎉 You'll be notified when a therapy slot opens</li>
                 </ul>
               </div>
               <p className="text-sm text-gray-600 mb-4">

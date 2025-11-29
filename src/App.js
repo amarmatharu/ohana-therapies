@@ -14,6 +14,7 @@ import usePageTracking from "./hooks/usePageTracking";
 import '../src/assets/css/style.css';
 import '../src/assets/css/bootstrap.min.css';
 import '../src/assets/css/responsive.css';
+import '../src/assets/css/polish.css';
 
 function AppContent() {
   // Track page views on route changes
