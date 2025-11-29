@@ -17,6 +17,8 @@ import '../src/assets/css/responsive.css';
 import '../src/assets/css/typography.css';
 import '../src/assets/css/polish.css';
 import '../src/assets/css/modern-clean.css';
+import '../src/assets/css/hero-polish.css';
+import '../src/assets/css/modern-footer.css';
 
 function AppContent() {
   // Track page views on route changes

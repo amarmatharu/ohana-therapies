@@ -81,27 +81,85 @@ const Hero = () => {
       <div className="container">
         <div className="cm_row">
           <div className="hero_content_wrap">
-            <h1 className="hero_title">No family should have to <span>do it alone</span></h1>
-            <p className="hero_detail">
-              Team Ohana is passionate about supporting and empowering families in San Jose, Santa Clara, and throughout the Bay Area to create meaningful changes
-              through In-home Applied Behavior Analysis (ABA) therapy, individualized for each of our family's needs.
-            </p>
-            <div className="hero_social">
-              <h2 className="hero_social_title">Follow Us:</h2>
-              <ul>
-                <li>
-                  <a href="https://www.facebook.com/ohanatherapies/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
-                    <img src={social1} alt="Facebook" loading="lazy" />
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.linkedin.com/company/ohana-therapies" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn">
-                    <img src={social2} alt="LinkedIn" loading="lazy" />
-                  </a>
-                </li>
-              </ul>
+            {/* Trust Badge */}
+            <div className="hero_badge">
+              <span className="badge_dot"></span>
+              <span className="badge_text">Trusted ABA Therapy Provider in San Jose & Santa Clara</span>
             </div>
-            <a href="#service_sec" className="cm_btn scrollTo" aria-label="Learn more about our services">Learn More</a>
+            
+            <h1 className="hero_title">Expert ABA Therapy for <span>Your Family</span></h1>
+            
+            <p className="hero_subtitle">
+              Compassionate, in-home Applied Behavior Analysis therapy helping children with autism reach their full potential.
+            </p>
+            
+            <p className="hero_detail">
+              Serving families in San Jose, Santa Clara, and the Bay Area with personalized, family-centered care that makes a difference.
+            </p>
+            
+            {/* Trust Badges */}
+            <div className="hero_trust_badges">
+              <div className="trust_badge">
+                <div className="trust_badge_icon">✓</div>
+                <div className="trust_badge_content">
+                  <div className="trust_badge_title">Insurance Accepted</div>
+                  <div className="trust_badge_subtitle">Most major plans</div>
+                </div>
+              </div>
+              <div className="trust_badge">
+                <div className="trust_badge_icon">🏠</div>
+                <div className="trust_badge_content">
+                  <div className="trust_badge_title">In-Home Services</div>
+                  <div className="trust_badge_subtitle">Comfortable & convenient</div>
+                </div>
+              </div>
+              <div className="trust_badge">
+                <div className="trust_badge_icon">👨‍👩‍👧‍👦</div>
+                <div className="trust_badge_content">
+                  <div className="trust_badge_title">Family-Centered</div>
+                  <div className="trust_badge_subtitle">Personalized care plans</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* CTA Buttons */}
+            <div className="hero_cta_group">
+              <a href="/waitlist" className="cm_btn cm_btn_primary" aria-label="Join our waitlist">
+                Join Waitlist
+              </a>
+              <a href="#service_sec" className="cm_btn cm_btn_secondary scrollTo" aria-label="Learn more about our services">
+                Learn More
+              </a>
+            </div>
+            
+            {/* Social Proof */}
+            <div className="hero_social_proof">
+              <div className="social_proof_item">
+                <span className="social_proof_number">500+</span>
+                <span className="social_proof_label">Therapy Sessions</span>
+              </div>
+              <div className="social_proof_divider"></div>
+              <div className="social_proof_item">
+                <span className="social_proof_number">100+</span>
+                <span className="social_proof_label">Families Served</span>
+              </div>
+              <div className="social_proof_divider"></div>
+              <div className="social_proof_item">
+                <span className="social_proof_number">4.9★</span>
+                <span className="social_proof_label">Parent Rating</span>
+              </div>
+            </div>
+            
+            {/* Social Media */}
+            <div className="hero_social">
+              <span className="hero_social_label">Follow us:</span>
+              <a href="https://www.facebook.com/ohanatherapies/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook" className="social_link">
+                <img src={social1} alt="Facebook" loading="lazy" />
+              </a>
+              <a href="https://www.linkedin.com/company/ohana-therapies" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" className="social_link">
+                <img src={social2} alt="LinkedIn" loading="lazy" />
+              </a>
+            </div>
           </div>
           <div className="hero_img_wrap">
             <div className="hero_pro_wrap">
