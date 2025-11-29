@@ -87,14 +87,10 @@ const Hero = () => {
               <span className="badge_text">Trusted ABA Therapy Provider in San Jose & Santa Clara</span>
             </div>
             
-            <h1 className="hero_title">Expert ABA Therapy for <span>Your Family</span></h1>
-            
-            <p className="hero_subtitle">
-              Compassionate, in-home Applied Behavior Analysis therapy helping children with autism reach their full potential.
-            </p>
+            <h1 className="hero_title">No family should have to <span>do it alone</span></h1>
             
             <p className="hero_detail">
-              Serving families in San Jose, Santa Clara, and the Bay Area with personalized, family-centered care that makes a difference.
+              Team Ohana is passionate about supporting and empowering families in San Jose, Santa Clara, and throughout the Bay Area to create meaningful changes through In-home Applied Behavior Analysis (ABA) therapy, individualized for each of our family's needs.
             </p>
             
             {/* Trust Badges */}
