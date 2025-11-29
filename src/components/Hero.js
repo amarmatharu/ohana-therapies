@@ -101,7 +101,7 @@ const Hero = () => {
                 </li>
               </ul>
             </div>
-            <a href="#service_sec" className="cm_btn scrollTo" aria-label="Learn more about our services">LEARN MORE</a>
+            <a href="#service_sec" className="cm_btn scrollTo" aria-label="Learn more about our services">Learn More</a>
           </div>
           <div className="hero_img_wrap">
             <div className="hero_pro_wrap">

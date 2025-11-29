@@ -97,7 +97,7 @@ const Services = () => {
       <div className="container">
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
-            <h1 className="sec_titel_text">SERVICES</h1>
+            <h1 className="sec_titel_text">Services</h1>
           </div>
         </div>
         <div className="row mt_top_30">

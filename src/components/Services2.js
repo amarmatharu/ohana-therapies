@@ -63,7 +63,7 @@ const Services2 = () => {
       <div className="container">
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
-            <h1 className="sec_titel_text">SPECIALIZED PROGRAMS</h1>
+            <h1 className="sec_titel_text">Specialized Programs</h1>
           </div>
         </div>
         <div className="row">

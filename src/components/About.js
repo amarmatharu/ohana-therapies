@@ -42,7 +42,7 @@ const About = () => {
       <div className="container">
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
-            <h1 className="sec_titel_text">ABOUT <span>OHANA</span></h1>
+            <h1 className="sec_titel_text">About <span>Ohana</span></h1>
           </div>
           <p className="dummy_text">
             "Ohana" is a Hawaiian term that means family, in all of its forms: blood-related, adoptive, and chosen.
