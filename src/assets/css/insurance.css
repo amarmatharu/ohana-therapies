@@ -83,79 +83,32 @@
 }
 
 /* ===========================
-   3. SINGLE INSURANCE DISPLAY
+   3. MULTI INSURANCE GRID (3 providers)
    =========================== */
 
-.insurance_single {
-  max-width: 400px;
+.insurance_logos_grid_multi {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 900px;
   margin: 0 auto 50px;
   animation: fadeInUp 0.6s ease-out;
   animation-delay: 0.2s;
   animation-fill-mode: backwards;
 }
 
-.insurance_logo_featured {
-  background: #ffffff;
-  border: 2px solid #10b981;
-  border-radius: 16px;
-  padding: 40px;
-  text-align: center;
-  position: relative;
-  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.15);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.insurance_logo_featured:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.25);
-}
-
-.featured_badge {
-  position: absolute;
-  top: -12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #10b981;
-  color: #ffffff;
-  padding: 6px 20px;
-  border-radius: 50px;
-  font-size: 13px;
-  font-weight: 600;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-}
-
-.insurance_logo_featured img {
-  max-width: 100%;
-  max-height: 120px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
-}
-
-.insurance_logo_featured:hover img {
-  transform: scale(1.05);
-}
-
-.insurance_name {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1f2937;
-  margin: 0;
-}
-
 @media (max-width: 768px) {
-  .insurance_logo_featured {
-    padding: 32px 24px;
+  .insurance_logos_grid_multi {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 400px;
   }
-  
-  .insurance_logo_featured img {
-    max-height: 100px;
-  }
-  
-  .insurance_name {
-    font-size: 16px;
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .insurance_logos_grid_multi {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
   }
 }
 
@@ -265,32 +218,31 @@
 
 .insurance_logo_item {
   background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 24px;
+  border: 2px solid #10b981;
+  border-radius: 16px;
+  padding: 32px 24px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100px;
+  text-align: center;
+  min-height: 180px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
   animation: fadeInUp 0.6s ease-out backwards;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
 }
 
 /* Stagger animations */
-.insurance_logo_item:nth-child(1) { animation-delay: 0.1s; }
-.insurance_logo_item:nth-child(2) { animation-delay: 0.15s; }
-.insurance_logo_item:nth-child(3) { animation-delay: 0.2s; }
-.insurance_logo_item:nth-child(4) { animation-delay: 0.25s; }
-.insurance_logo_item:nth-child(5) { animation-delay: 0.3s; }
-.insurance_logo_item:nth-child(6) { animation-delay: 0.35s; }
-.insurance_logo_item:nth-child(7) { animation-delay: 0.4s; }
+.insurance_logos_grid_multi .insurance_logo_item:nth-child(1) { animation-delay: 0.2s; }
+.insurance_logos_grid_multi .insurance_logo_item:nth-child(2) { animation-delay: 0.3s; }
+.insurance_logos_grid_multi .insurance_logo_item:nth-child(3) { animation-delay: 0.4s; }
 
 .insurance_logo_item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-  border-color: #d1d5db;
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(16, 185, 129, 0.2);
+  border-color: #059669;
 }
 
 /* Subtle shine effect on hover */
@@ -311,27 +263,39 @@
 
 .insurance_logo_item img {
   max-width: 100%;
-  max-height: 60px;
+  max-height: 80px;
   width: auto;
   height: auto;
   object-fit: contain;
-  filter: grayscale(100%) opacity(0.7);
+  margin-bottom: 16px;
   transition: all 0.3s ease;
 }
 
 .insurance_logo_item:hover img {
-  filter: grayscale(0%) opacity(1);
-  transform: scale(1.05);
+  transform: scale(1.08);
+}
+
+.insurance_logo_item .insurance_name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+  line-height: 1.4;
 }
 
 @media (max-width: 768px) {
   .insurance_logo_item {
-    padding: 20px;
-    min-height: 80px;
+    padding: 28px 20px;
+    min-height: 160px;
   }
   
   .insurance_logo_item img {
-    max-height: 50px;
+    max-height: 70px;
+    margin-bottom: 12px;
+  }
+  
+  .insurance_logo_item .insurance_name {
+    font-size: 15px;
   }
 }
 
