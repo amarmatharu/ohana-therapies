@@ -1,8 +1,16 @@
-// Automatically use local backend in development, production API in production
+// Simple configuration for API endpoints
+
 const config = {
-  baseUrl: process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:8080' 
-    : 'https://api.ohanabehavioralservice.com'
+  // Backend API URL - update this based on your environment
+  API_BASE_URL: process.env.REACT_APP_API_URL || 'http://localhost:8080',
+  
+  // API Endpoints
+  ENDPOINTS: {
+    CONTACT: '/api/contact',
+    WAITLIST: '/api/waitlist',
+    CAREERS: '/api/careers/apply'
+  }
 };
 
 export default config;
+
