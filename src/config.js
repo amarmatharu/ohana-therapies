@@ -7,9 +7,9 @@ const getApiBaseUrl = () => {
     return process.env.REACT_APP_API_URL;
   }
   
-  // In production, use relative path (same domain as frontend)
+  // In production, use Elastic Beanstalk backend
   if (process.env.NODE_ENV === 'production') {
-    return ''; // Empty string means relative URLs
+    return 'http://ohanagateway.us-east-1.elasticbeanstalk.com';
   }
   
   // In development, use localhost
