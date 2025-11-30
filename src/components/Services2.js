@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from './SEO';
+import OptimizedImage from './OptimizedImage';
 import '../assets/css/style.css';
 import services2Image from '../assets/images/services_2.png';
 
@@ -69,11 +70,11 @@ const Services2 = () => {
         <div className="row">
           <div className="col-md-6 col-12">
             <div className="service_img">
-              <img 
+              <OptimizedImage 
                 src={services2Image} 
                 alt="Child participating in social skills therapy" 
-                width="600" 
-                height="400"
+                width={600} 
+                height={400}
                 loading="lazy"
               />
             </div>

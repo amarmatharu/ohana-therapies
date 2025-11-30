@@ -1,5 +1,6 @@
 import React from 'react';
 import SEO from './SEO';
+import OptimizedImage from './OptimizedImage';
 import '../assets/css/style.css';
 import social1 from '../assets/images/social-1.svg';
 import social2 from '../assets/images/social-4.svg';
@@ -162,18 +163,42 @@ const Hero = () => {
               <div className="row">
                 <div className="hero_pro_box hero_pro_box_one">
                   <div className="cm_img_wrap">
-                    <img src={hero1} alt="Therapy session example 1" loading="lazy" />
+                    <OptimizedImage 
+                      src={hero1} 
+                      alt="Therapy session example 1" 
+                      priority={true}
+                      width={295}
+                      height={200}
+                    />
                   </div>
                   <div className="cm_img_wrap">
-                    <img src={hero2} alt="Therapy session example 2" loading="lazy" />
+                    <OptimizedImage 
+                      src={hero2} 
+                      alt="Therapy session example 2" 
+                      priority={true}
+                      width={295}
+                      height={200}
+                    />
                   </div>
                 </div>
                 <div className="hero_pro_box hero_pro_box_two">
                   <div className="cm_img_wrap">
-                    <img src={hero3} alt="Child engaging in therapy activity" loading="lazy" />
+                    <OptimizedImage 
+                      src={hero3} 
+                      alt="Child engaging in therapy activity" 
+                      loading="lazy"
+                      width={295}
+                      height={400}
+                    />
                   </div>
                   <div className="cm_img_wrap">
-                    <img src={hero4} alt="Family therapy session" loading="lazy" />
+                    <OptimizedImage 
+                      src={hero4} 
+                      alt="Family therapy session" 
+                      loading="lazy"
+                      width={295}
+                      height={200}
+                    />
                   </div>
                 </div>
               </div>
