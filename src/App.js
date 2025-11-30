@@ -22,8 +22,7 @@ import '../src/assets/css/hero-polish.css';
 import '../src/assets/css/insurance.css';
 import '../src/assets/css/modern-footer.css';
 import '../src/assets/css/better-spacing.css';
-import '../src/assets/css/optimized-image.css';
-import '../src/assets/css/contact-form.css';
+import '../src/assets/css/careers-form.css';
 
 function AppContent() {
   // Track page views on route changes

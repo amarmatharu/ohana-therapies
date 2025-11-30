@@ -1,0 +1,272 @@
+/* ===================================
+   CAREERS FORM ENHANCEMENTS
+   =================================== */
+
+/* Enhance the form container */
+.careers_form {
+  box-shadow: 0px 0px 40px rgba(19, 18, 18, 0.08) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.careers_form:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 5px 50px rgba(19, 18, 18, 0.12) !important;
+}
+
+/* Spinner animation for loading state */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===================================
+   IMPROVED INPUT STYLING
+   =================================== */
+
+.careers_input input:focus,
+.careers_input select:focus {
+  border-bottom-color: #EE5066 !important;
+  outline: none;
+}
+
+.careers_input input,
+.careers_input select {
+  transition: border-color 0.3s ease;
+}
+
+/* Add subtle focus glow */
+.careers_input input:focus,
+.careers_input select:focus {
+  box-shadow: 0 2px 0 0 rgba(238, 80, 102, 0.3);
+}
+
+/* Placeholder enhancement */
+.careers_input input::placeholder {
+  color: #A99699;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.careers_input input:focus::placeholder {
+  opacity: 0.5;
+}
+
+/* ===================================
+   FILE UPLOAD IMPROVEMENTS
+   =================================== */
+
+.file-upload-select {
+  cursor: pointer !important;
+  transition: all 0.3s ease;
+  display: flex !important;
+  align-items: center;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #A99699;
+}
+
+.file-upload-select:hover {
+  border-bottom-color: #EE5066 !important;
+}
+
+.file-upload-select:hover .file-select-button img {
+  transform: scale(1.15) rotate(5deg);
+  transition: transform 0.3s ease;
+}
+
+.file-upload-select:hover .file-select-name {
+  color: #EE5066 !important;
+}
+
+.file-select-name {
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+/* When file is selected, show different color */
+.file-upload input[type="file"]:not([value=""]) + .file-upload-select .file-select-name,
+.file-upload .file-select-name:not([data-default]) {
+  color: #000000;
+  font-weight: 500;
+}
+
+/* ===================================
+   FORM BUTTON ENHANCEMENTS
+   =================================== */
+
+.form_btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.form_btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(247, 226, 233, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.form_btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.form_btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form_btn:disabled:hover {
+  background: #000000;
+}
+
+/* ===================================
+   ALERT MESSAGES
+   =================================== */
+
+.alert {
+  animation: slideIn 0.3s ease-out;
+  line-height: 1.5;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   INNER INPUT GROUP SPACING
+   =================================== */
+
+.inner_input_group {
+  position: relative;
+}
+
+.inner_input_group input:focus {
+  transform: translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+/* ===================================
+   DISABLED STATE STYLING
+   =================================== */
+
+.careers_input input:disabled,
+.careers_input select:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: rgba(169, 150, 153, 0.05);
+}
+
+/* ===================================
+   RESPONSIVE IMPROVEMENTS
+   =================================== */
+
+@media (max-width: 768px) {
+  .alert {
+    font-size: 13px !important;
+    padding: 10px 12px !important;
+  }
+  
+  .careers_input input,
+  .careers_input select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .file-select-name {
+    max-width: 140px !important;
+  }
+}
+
+/* ===================================
+   FORM VALIDATION FEEDBACK
+   =================================== */
+
+.careers_input input:invalid:not(:placeholder-shown) {
+  border-bottom-color: #EE5066;
+}
+
+.careers_input input:valid:not(:placeholder-shown) {
+  border-bottom-color: #4CAF50;
+}
+
+/* ===================================
+   MICRO-INTERACTIONS
+   =================================== */
+
+.careers_form {
+  animation: formFadeIn 0.5s ease-out;
+}
+
+@keyframes formFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stagger animation for form fields */
+.careers_input:nth-child(1) { animation: fieldSlideIn 0.4s ease-out 0.1s backwards; }
+.careers_input:nth-child(2) { animation: fieldSlideIn 0.4s ease-out 0.2s backwards; }
+.careers_input:nth-child(3) { animation: fieldSlideIn 0.4s ease-out 0.3s backwards; }
+.careers_input:nth-child(4) { animation: fieldSlideIn 0.4s ease-out 0.4s backwards; }
+.careers_input:nth-child(5) { animation: fieldSlideIn 0.4s ease-out 0.5s backwards; }
+.careers_input:nth-child(6) { animation: fieldSlideIn 0.4s ease-out 0.6s backwards; }
+
+@keyframes fieldSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.form_btn {
+  animation: buttonSlideIn 0.4s ease-out 0.7s backwards;
+}
+
+@keyframes buttonSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Check mark bounce animation */
+@keyframes checkBounce {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
