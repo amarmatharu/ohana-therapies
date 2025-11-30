@@ -9,7 +9,9 @@ const getApiBaseUrl = () => {
   
   // In production, use Elastic Beanstalk backend
   if (process.env.NODE_ENV === 'production') {
-    return 'http://ohanagateway.us-east-1.elasticbeanstalk.com';
+    // Change to https:// once SSL certificate is configured
+    // return 'https://api.ohanatherapies.com'; // Use this after setting up SSL
+    return 'https://api.ohanabehavioralservice.com';
   }
   
   // In development, use localhost
