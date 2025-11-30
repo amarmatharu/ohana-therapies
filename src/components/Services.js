@@ -1,6 +1,5 @@
 import React from 'react';
 import SEO from './SEO';
-import OptimizedImage from './OptimizedImage';
 import '../assets/js/bootstrap.bundle.js';
 import '../assets/js/bootstrap.bundle.js.map';
 import '../assets/js/custom.js';
@@ -104,11 +103,11 @@ const Services = () => {
         <div className="row mt_top_30">
           <div className="col-md-6 col-12 order-md-2 p_rr">
             <div className="service_img">
-              <OptimizedImage 
+              <img 
                 src={services_1} 
                 alt="ABA therapy session in progress" 
-                width={600} 
-                height={400}
+                width="600" 
+                height="400"
                 loading="lazy"
               />
             </div>
@@ -135,11 +134,11 @@ const Services = () => {
         <div className="row mt_top_77">
           <div className="col-md-6 col-12">
             <div className="service_img">
-              <OptimizedImage 
+              <img 
                 src={service_image} 
                 alt="Personalized ABA therapy approach" 
-                width={600}
-                height={400}
+                width="600"
+                height="400"
                 loading="lazy"
               />
             </div>

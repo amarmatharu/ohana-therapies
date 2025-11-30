@@ -1,6 +1,5 @@
 import React from 'react';
 import SEO from './SEO';
-import OptimizedImage from './OptimizedImage';
 import '../assets/css/style.css';
 import social1 from '../assets/images/social-1.svg';
 import social2 from '../assets/images/social-4.svg';
@@ -163,42 +162,18 @@ const Hero = () => {
               <div className="row">
                 <div className="hero_pro_box hero_pro_box_one">
                   <div className="cm_img_wrap">
-                    <OptimizedImage 
-                      src={hero1} 
-                      alt="Therapy session example 1" 
-                      priority={true}
-                      width={295}
-                      height={200}
-                    />
+                    <img src={hero1} alt="Therapy session example 1" loading="eager" />
                   </div>
                   <div className="cm_img_wrap">
-                    <OptimizedImage 
-                      src={hero2} 
-                      alt="Therapy session example 2" 
-                      priority={true}
-                      width={295}
-                      height={200}
-                    />
+                    <img src={hero2} alt="Therapy session example 2" loading="eager" />
                   </div>
                 </div>
                 <div className="hero_pro_box hero_pro_box_two">
                   <div className="cm_img_wrap">
-                    <OptimizedImage 
-                      src={hero3} 
-                      alt="Child engaging in therapy activity" 
-                      loading="lazy"
-                      width={295}
-                      height={400}
-                    />
+                    <img src={hero3} alt="Child engaging in therapy activity" loading="lazy" />
                   </div>
                   <div className="cm_img_wrap">
-                    <OptimizedImage 
-                      src={hero4} 
-                      alt="Family therapy session" 
-                      loading="lazy"
-                      width={295}
-                      height={200}
-                    />
+                    <img src={hero4} alt="Family therapy session" loading="lazy" />
                   </div>
                 </div>
               </div>

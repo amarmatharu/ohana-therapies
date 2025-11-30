@@ -1,6 +1,5 @@
 import React from 'react';
 import SEO from './SEO';
-import OptimizedImage from './OptimizedImage';
 import '../assets/css/style.css';
 import insurance1 from '../assets/images/insurances-1.png';
 import insurance2 from '../assets/images/insurances-2.png';
@@ -54,32 +53,26 @@ const Insurance = () => {
           
           <div className="insurance_logos_grid_multi">
             <div className="insurance_logo_item">
-              <OptimizedImage 
+              <img 
                 src={insurance1} 
                 alt="Santa Clara Family Health Plan" 
                 loading="lazy"
-                width={200}
-                height={80}
               />
               <p className="insurance_name">Santa Clara Family Health Plan</p>
             </div>
             <div className="insurance_logo_item">
-              <OptimizedImage 
+              <img 
                 src={insurance2} 
                 alt="Cigna Insurance" 
                 loading="lazy"
-                width={200}
-                height={80}
               />
               <p className="insurance_name">Cigna</p>
             </div>
             <div className="insurance_logo_item">
-              <OptimizedImage 
+              <img 
                 src={insurance3} 
                 alt="Anthem Insurance" 
                 loading="lazy"
-                width={200}
-                height={80}
               />
               <p className="insurance_name">Anthem</p>
             </div>
