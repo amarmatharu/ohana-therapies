@@ -1,11 +1,463 @@
 import React, { useState, useEffect } from "react";
-import { Card, CardContent } from "../components/ui/card";
-import { Button } from "../components/ui/button";
-import { Plus } from "lucide-react";
-import SEO from "./SEO";
-import config from '../config';
+import { Plus, X, Check, Clock, Users, MapPin, Mail, Phone, User, Shield, Calendar, Heart, Loader2, ChevronRight } from "lucide-react";
 import axios from "axios";
-import '../assets/css/style.css';
+
+const API_BASE_URL = "https://api.ohanabehavioralservice.com";
+
+// Inline styles
+const styles = {
+  container: {
+    minHeight: '100vh',
+    background: 'linear-gradient(to bottom right, #fff1f2, #ffffff, #fdf2f8)',
+  },
+  main: {
+    maxWidth: '896px',
+    margin: '0 auto',
+    padding: '32px 16px',
+  },
+  heroSection: {
+    textAlign: 'center',
+    marginBottom: '40px',
+  },
+  badge: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '8px',
+    backgroundColor: '#ffe4e6',
+    color: '#be123c',
+    padding: '8px 16px',
+    borderRadius: '9999px',
+    fontSize: '14px',
+    fontWeight: '500',
+    marginBottom: '24px',
+  },
+  title: {
+    fontSize: '2.5rem',
+    fontWeight: '700',
+    color: '#111827',
+    marginBottom: '16px',
+    lineHeight: '1.2',
+  },
+  titleGradient: {
+    background: 'linear-gradient(to right, #f43f5e, #ec4899)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+  },
+  subtitle: {
+    fontSize: '18px',
+    color: '#4b5563',
+    maxWidth: '672px',
+    margin: '0 auto',
+    lineHeight: '1.6',
+  },
+  card: {
+    backgroundColor: '#ffffff',
+    borderRadius: '16px',
+    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1)',
+    border: '1px solid #f3f4f6',
+    overflow: 'hidden',
+    marginBottom: '32px',
+  },
+  cardSection: {
+    padding: '24px 32px',
+  },
+  sectionTitle: {
+    fontSize: '20px',
+    fontWeight: '600',
+    color: '#111827',
+    marginBottom: '24px',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+  },
+  statsGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '16px',
+  },
+  statCard: {
+    background: 'linear-gradient(to bottom right, #fff1f2, #fdf2f8)',
+    borderRadius: '12px',
+    padding: '20px',
+    border: '1px solid #fecdd3',
+  },
+  statCardBlue: {
+    background: 'linear-gradient(to bottom right, #eff6ff, #eef2ff)',
+    borderRadius: '12px',
+    padding: '20px',
+    border: '1px solid #bfdbfe',
+  },
+  statHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    marginBottom: '8px',
+  },
+  statIcon: {
+    width: '40px',
+    height: '40px',
+    backgroundColor: '#ffe4e6',
+    borderRadius: '8px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  statIconBlue: {
+    width: '40px',
+    height: '40px',
+    backgroundColor: '#dbeafe',
+    borderRadius: '8px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  statLabel: {
+    fontSize: '14px',
+    fontWeight: '500',
+    color: '#4b5563',
+  },
+  statValue: {
+    fontSize: '28px',
+    fontWeight: '700',
+    color: '#111827',
+  },
+  statUnit: {
+    fontSize: '16px',
+    fontWeight: '400',
+    color: '#6b7280',
+    marginLeft: '8px',
+  },
+  graySection: {
+    backgroundColor: '#f9fafb',
+    borderTop: '1px solid #f3f4f6',
+    padding: '24px 32px',
+  },
+  stepsGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+    gap: '12px',
+  },
+  stepItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    backgroundColor: '#ffffff',
+    borderRadius: '8px',
+    padding: '12px',
+    border: '1px solid #f3f4f6',
+  },
+  stepIcon: {
+    width: '32px',
+    height: '32px',
+    backgroundColor: '#dcfce7',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  stepText: {
+    fontSize: '14px',
+    color: '#374151',
+  },
+  ctaSection: {
+    padding: '24px 32px',
+    borderTop: '1px solid #f3f4f6',
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  primaryButton: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    background: 'linear-gradient(to right, #f43f5e, #ec4899)',
+    color: '#ffffff',
+    padding: '16px 32px',
+    borderRadius: '12px',
+    fontSize: '18px',
+    fontWeight: '600',
+    border: 'none',
+    cursor: 'pointer',
+    boxShadow: '0 10px 25px -5px rgba(244, 63, 94, 0.4)',
+    transition: 'all 0.3s ease',
+  },
+  trustBadges: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+    gap: '16px',
+  },
+  trustBadge: {
+    backgroundColor: '#ffffff',
+    borderRadius: '12px',
+    padding: '20px',
+    border: '1px solid #f3f4f6',
+    boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)',
+  },
+  trustBadgeIcon: {
+    width: '40px',
+    height: '40px',
+    backgroundColor: '#ffe4e6',
+    borderRadius: '8px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: '12px',
+  },
+  trustBadgeTitle: {
+    fontWeight: '600',
+    color: '#111827',
+    marginBottom: '4px',
+  },
+  trustBadgeDesc: {
+    fontSize: '14px',
+    color: '#6b7280',
+  },
+  modal: {
+    position: 'fixed',
+    inset: 0,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backdropFilter: 'blur(4px)',
+    zIndex: 50,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '16px',
+  },
+  modalContent: {
+    backgroundColor: '#ffffff',
+    borderRadius: '16px',
+    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+    width: '100%',
+    maxWidth: '512px',
+    maxHeight: '90vh',
+    overflowY: 'auto',
+  },
+  modalHeader: {
+    position: 'sticky',
+    top: 0,
+    backgroundColor: '#ffffff',
+    borderBottom: '1px solid #f3f4f6',
+    padding: '20px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    zIndex: 10,
+  },
+  modalTitle: {
+    fontSize: '20px',
+    fontWeight: '600',
+    color: '#111827',
+  },
+  closeButton: {
+    width: '32px',
+    height: '32px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '50%',
+    border: 'none',
+    backgroundColor: 'transparent',
+    cursor: 'pointer',
+  },
+  form: {
+    padding: '20px 24px',
+  },
+  formGroup: {
+    marginBottom: '20px',
+  },
+  label: {
+    display: 'block',
+    fontSize: '14px',
+    fontWeight: '500',
+    color: '#374151',
+    marginBottom: '8px',
+  },
+  required: {
+    color: '#ef4444',
+  },
+  optional: {
+    color: '#9ca3af',
+  },
+  inputWrapper: {
+    position: 'relative',
+  },
+  inputIcon: {
+    position: 'absolute',
+    left: '12px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    color: '#9ca3af',
+  },
+  input: {
+    width: '100%',
+    paddingLeft: '44px',
+    paddingRight: '16px',
+    paddingTop: '12px',
+    paddingBottom: '12px',
+    border: '1px solid #e5e7eb',
+    borderRadius: '12px',
+    fontSize: '16px',
+    outline: 'none',
+    boxSizing: 'border-box',
+  },
+  inputError: {
+    borderColor: '#fca5a5',
+    backgroundColor: '#fef2f2',
+  },
+  select: {
+    width: '100%',
+    paddingLeft: '44px',
+    paddingRight: '40px',
+    paddingTop: '12px',
+    paddingBottom: '12px',
+    border: '1px solid #e5e7eb',
+    borderRadius: '12px',
+    fontSize: '16px',
+    outline: 'none',
+    appearance: 'none',
+    backgroundColor: '#ffffff',
+    cursor: 'pointer',
+    boxSizing: 'border-box',
+  },
+  errorText: {
+    marginTop: '6px',
+    fontSize: '14px',
+    color: '#dc2626',
+  },
+  helpText: {
+    marginTop: '6px',
+    fontSize: '12px',
+    color: '#6b7280',
+  },
+  errorBox: {
+    backgroundColor: '#fef2f2',
+    border: '1px solid #fecaca',
+    color: '#b91c1c',
+    padding: '12px 16px',
+    borderRadius: '12px',
+    fontSize: '14px',
+    display: 'flex',
+    alignItems: 'flex-start',
+    gap: '12px',
+    marginBottom: '20px',
+  },
+  errorIcon: {
+    width: '20px',
+    height: '20px',
+    backgroundColor: '#fee2e2',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  submitButton: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px',
+    background: 'linear-gradient(to right, #f43f5e, #ec4899)',
+    color: '#ffffff',
+    padding: '16px',
+    borderRadius: '12px',
+    fontSize: '16px',
+    fontWeight: '600',
+    border: 'none',
+    cursor: 'pointer',
+    boxShadow: '0 10px 25px -5px rgba(244, 63, 94, 0.3)',
+  },
+  submitButtonDisabled: {
+    background: 'linear-gradient(to right, #9ca3af, #6b7280)',
+    cursor: 'not-allowed',
+    boxShadow: 'none',
+  },
+  successModal: {
+    padding: '32px',
+    textAlign: 'center',
+  },
+  successIcon: {
+    width: '80px',
+    height: '80px',
+    backgroundColor: '#dcfce7',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '0 auto 24px',
+  },
+  successTitle: {
+    fontSize: '24px',
+    fontWeight: '700',
+    color: '#111827',
+    marginBottom: '8px',
+  },
+  successText: {
+    color: '#4b5563',
+    marginBottom: '24px',
+  },
+  positionNumber: {
+    fontWeight: '700',
+    color: '#e11d48',
+  },
+  nextStepsBox: {
+    backgroundColor: '#f9fafb',
+    borderRadius: '12px',
+    padding: '20px',
+    marginBottom: '24px',
+    textAlign: 'left',
+  },
+  nextStepsTitle: {
+    fontWeight: '600',
+    color: '#111827',
+    marginBottom: '12px',
+  },
+  nextStepItem: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    fontSize: '14px',
+    color: '#374151',
+    marginBottom: '12px',
+  },
+  nextStepIcon: {
+    width: '28px',
+    height: '28px',
+    backgroundColor: '#ffe4e6',
+    borderRadius: '50%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  },
+  contactInfo: {
+    fontSize: '14px',
+    color: '#4b5563',
+    marginBottom: '24px',
+  },
+  contactBold: {
+    fontWeight: '600',
+  },
+  loader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '32px',
+  },
+  spin: {
+    animation: 'spin 1s linear infinite',
+  },
+};
+
+// Add keyframes for spin animation
+const spinKeyframes = `
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+`;
 
 export default function Waitlist() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,24 +473,37 @@ export default function Waitlist() {
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchWaitlistData();
-    document.body.style.overflow = "auto"; // Enable scrolling
-  return () => {
-    document.body.style.overflow = ""; // Reset when leaving the page
-  };
   }, []);
 
-  const fetchWaitlistData = async () => {
-    try {
-      const sizeResponse = await axios.get(`${config.baseUrl}/api/waitlist/size`);
-      setWaitlistSize(sizeResponse.data.size);
+  useEffect(() => {
+    if (isOpen || showSuccessModal) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen, showSuccessModal]);
 
-      const waitTimeResponse = await axios.get(`${config.baseUrl}/api/waitlist/estimated-wait-time`);
+  const fetchWaitlistData = async () => {
+    setIsLoading(true);
+    try {
+      const [sizeResponse, waitTimeResponse] = await Promise.all([
+        axios.get(`${API_BASE_URL}/api/waitlist/size`),
+        axios.get(`${API_BASE_URL}/api/waitlist/estimated-wait-time`)
+      ]);
+      setWaitlistSize(sizeResponse.data.size);
       setEstimatedWaitTime(waitTimeResponse.data.estimatedWaitTime);
     } catch (error) {
       console.error("Error fetching waitlist data", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -56,52 +521,56 @@ export default function Waitlist() {
     return value;
   };
 
+  const validateForm = () => {
+    const errors = {};
+    
+    if (!name.trim()) errors.name = "Name is required";
+    if (!age) errors.age = "Please select your child's age";
+    if (!insurance.trim()) errors.insurance = "Insurance provider is required";
+    if (!location.trim()) errors.location = "Location is required";
+    if (!email.trim()) {
+      errors.email = "Email is required";
+    } else if (!validateEmail(email)) {
+      errors.email = "Please enter a valid email";
+    }
+    if (phoneNumber && phoneNumber.replace(/\D/g, '').length > 0 && phoneNumber.replace(/\D/g, '').length < 10) {
+      errors.phoneNumber = "Please enter a valid 10-digit phone number";
+    }
+    
+    setFieldErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleSignup = async (event) => {
     event.preventDefault();
     setErrorMessage("");
+    
+    if (!validateForm()) return;
+    
     setIsSubmitting(true);
-    
-    // Validate email
-    if (!validateEmail(email)) {
-      setErrorMessage("Please enter a valid email address");
-      setIsSubmitting(false);
-      return;
-    }
-    
-    // Validate phone number
-    if (phoneNumber && phoneNumber.replace(/\D/g, '').length < 10) {
-      setErrorMessage("Please enter a valid 10-digit phone number");
-      setIsSubmitting(false);
-      return;
-    }
-    
     const formattedPhone = formatPhoneNumber(phoneNumber);
-    
+
     try {
-      const response = await axios.post(`${config.baseUrl}/api/waitlist`, { 
-        name, 
-        age: age ? parseInt(age, 10) : 0,  
-        location, 
+      const response = await axios.post(`${API_BASE_URL}/api/waitlist`, {
+        name,
+        age: age ? parseInt(age, 10) : 0,
+        location,
         insurance,
-        email, 
-        phoneNumber: formattedPhone 
+        email,
+        phoneNumber: formattedPhone
       });
-      
+
       setPosition(response.data.position);
       await fetchWaitlistData();
-      
-      // Reset form fields
       setName("");
       setAge("");
       setInsurance("");
       setLocation("");
       setEmail("");
       setPhoneNumber("");
-      
-      // Close form modal and show success modal
+      setFieldErrors({});
       setIsOpen(false);
       setShowSuccessModal(true);
-      
     } catch (error) {
       if (error.response && error.response.status === 409) {
         setErrorMessage("This email is already registered on the waitlist.");
@@ -114,241 +583,350 @@ export default function Waitlist() {
     }
   };
 
-  // Structured Data for Waitlist Page
-  const waitlistStructuredData = {
-    "@context": "https://schema.org",
-    "@type": "MedicalBusiness",
-    "name": "Ohana Therapies Waitlist",
-    "description": "Join the waitlist for ABA therapy services in San Jose and Santa Clara. Expert autism therapy, in-home ABA services, and family support programs.",
-    "url": "https://ohanatherapies.com/waitlist",
-    "medicalSpecialty": "Applied Behavior Analysis",
-    "availableService": [
-      {
-        "@type": "MedicalTherapy",
-        "name": "ABA Therapy for Autism",
-        "description": "Comprehensive applied behavior analysis therapy for children with autism spectrum disorder in San Jose and Santa Clara"
-      },
-      {
-        "@type": "MedicalTherapy",
-        "name": "In-Home Autism Therapy",
-        "description": "Personalized in-home ABA therapy services throughout the Bay Area"
-      }
-    ],
-    "areaServed": [
-      {
-        "@type": "City",
-        "name": "San Jose",
-        "containedInPlace": {
-          "@type": "State",
-          "name": "California"
-        }
-      },
-      {
-        "@type": "City",
-        "name": "Santa Clara",
-        "containedInPlace": {
-          "@type": "State",
-          "name": "California"
-        }
-      }
-    ]
+  const handlePhoneChange = (e) => {
+    const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+    setPhoneNumber(value);
+    if (fieldErrors.phoneNumber) {
+      setFieldErrors(prev => ({ ...prev, phoneNumber: null }));
+    }
+  };
+
+  const clearFieldError = (field) => {
+    if (fieldErrors[field]) {
+      setFieldErrors(prev => ({ ...prev, [field]: null }));
+    }
   };
 
   return (
-    <>
-      <SEO
-        title="Join Waitlist - ABA Therapy San Jose & Santa Clara | Ohana Therapies"
-        description="Join our waitlist for expert ABA therapy services in San Jose and Santa Clara, CA. In-home autism therapy, family training, and personalized care. Insurance accepted."
-        keywords="ABA therapy waitlist San Jose, autism therapy Santa Clara, join ABA waitlist, ABA provider San Jose, autism services waitlist, in-home therapy Bay Area, ABA therapy enrollment"
-        structuredData={waitlistStructuredData}
-        breadcrumbs={[
-          { name: 'Home', url: 'https://ohanatherapies.com' },
-          { name: 'Waitlist', url: 'https://ohanatherapies.com/waitlist' }
-        ]}
-      />
+    <div style={styles.container}>
+      <style>{spinKeyframes}</style>
       
-      <div className="p-6 max-w-2xl mx-auto bg-gray-100 rounded-lg shadow-lg mt-10 relative">
-        
-        {/* Location-Specific Header */}
-        <div className="text-center mb-6">
-          <h1 className="text-3xl font-bold text-blue-800 mb-2">ABA Therapy Waitlist</h1>
-          <p className="text-gray-700 text-lg">
+      <main style={styles.main}>
+        {/* Hero Section */}
+        <div style={styles.heroSection}>
+          <div style={styles.badge}>
+            <MapPin size={16} />
             Serving San Jose, Santa Clara & the Bay Area
-          </p>
-          <p className="text-gray-600 mt-2">
-            Expert autism therapy services, in-home ABA therapy, and family support programs
+          </div>
+          <h1 style={styles.title}>
+            ABA Therapy <span style={styles.titleGradient}>Waitlist</span>
+          </h1>
+          <p style={styles.subtitle}>
+            Expert autism therapy services, in-home ABA therapy, and family support programs tailored to your child's unique needs.
           </p>
         </div>
-        
-        <Card className="bg-white rounded-lg shadow-md p-6">
-          <CardContent className="p-4">
-            <h2 className="text-2xl font-bold mb-4 text-center text-blue-700">Current Waitlist</h2>
-            <p className="text-center text-gray-600 text-lg">📌 <strong>{waitlistSize}</strong> {waitlistSize === 1 ? 'family is' : 'families are'} currently on the waitlist.</p>
-            <p className="text-center text-gray-600 mt-2 text-lg">⏳ {estimatedWaitTime}</p>
+
+        {/* Stats Card */}
+        <div style={styles.card}>
+          <div style={styles.cardSection}>
+            <h2 style={styles.sectionTitle}>
+              <Users size={20} color="#f43f5e" />
+              Current Waitlist Status
+            </h2>
             
-            {/* What to Expect Section */}
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <h3 className="font-semibold text-gray-800 mb-2">What happens after you join?</h3>
-              <ul className="text-sm text-gray-700 space-y-2">
-                <li className="stagger-item">✓ You'll receive a confirmation email with your position</li>
-                <li className="stagger-item">✓ Our team will contact you within 2-3 business days</li>
-                <li className="stagger-item">✓ We'll discuss your child's needs and insurance coverage</li>
-                <li className="stagger-item">✓ You'll be notified when a therapy slot becomes available</li>
-              </ul>
-            </div>
-          </CardContent>
-          <div className="mt-6 flex justify-center">
-            <Button onClick={() => setIsOpen(true)} className="add-details-button">
-              <Plus className="mr-2 text-white" size={20} /> <span className="">Join Waitlist Now</span>
-            </Button>
-          </div>
-        </Card>
-      
-           
-      {isOpen && (
-          <div className="popup-form-container">
-          <div className="popup-form">
-            <span className="close-btn" onClick={() => !isSubmitting && setIsOpen(false)}>&times;</span>
-            <div className="container">
-              <div className="cm_sec_ttile">
-                <div className="sec_ttile">
-                  <h1 className="sec_titel_text">Join <span>Waitlist</span></h1>
+            {isLoading ? (
+              <div style={styles.loader}>
+                <Loader2 size={32} color="#f43f5e" style={styles.spin} />
+              </div>
+            ) : (
+              <div style={styles.statsGrid}>
+                <div style={styles.statCard}>
+                  <div style={styles.statHeader}>
+                    <div style={styles.statIcon}>
+                      <Users size={20} color="#e11d48" />
+                    </div>
+                    <span style={styles.statLabel}>Families Waiting</span>
+                  </div>
+                  <p style={styles.statValue}>
+                    {waitlistSize}
+                    <span style={styles.statUnit}>
+                      {waitlistSize === 1 ? 'family' : 'families'}
+                    </span>
+                  </p>
+                </div>
+                
+                <div style={styles.statCardBlue}>
+                  <div style={styles.statHeader}>
+                    <div style={styles.statIconBlue}>
+                      <Clock size={20} color="#2563eb" />
+                    </div>
+                    <span style={styles.statLabel}>Estimated Wait</span>
+                  </div>
+                  <p style={{ ...styles.statValue, fontSize: '18px' }}>
+                    {estimatedWaitTime || "Contact us for details"}
+                  </p>
                 </div>
               </div>
-              
+            )}
+          </div>
+
+          {/* What to Expect */}
+          <div style={styles.graySection}>
+            <h3 style={styles.sectionTitle}>
+              <Calendar size={20} color="#f43f5e" />
+              What happens after you join?
+            </h3>
+            <div style={styles.stepsGrid}>
+              {[
+                { icon: Mail, text: "Confirmation email with your position" },
+                { icon: Phone, text: "Contact within 2-3 business days" },
+                { icon: User, text: "Discuss your child's needs & insurance" },
+                { icon: Check, text: "Notified when a slot opens" }
+              ].map((item, index) => (
+                <div key={index} style={styles.stepItem}>
+                  <div style={styles.stepIcon}>
+                    <item.icon size={16} color="#16a34a" />
+                  </div>
+                  <span style={styles.stepText}>{item.text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA Button */}
+          <div style={styles.ctaSection}>
+            <button
+              onClick={() => setIsOpen(true)}
+              style={styles.primaryButton}
+              onMouseOver={(e) => e.target.style.transform = 'translateY(-2px)'}
+              onMouseOut={(e) => e.target.style.transform = 'translateY(0)'}
+            >
+              <Plus size={20} />
+              Join Waitlist Now
+            </button>
+          </div>
+        </div>
+
+        {/* Trust Badges */}
+        <div style={styles.trustBadges}>
+          {[
+            { icon: Shield, title: "Insurance Accepted", desc: "Most major plans covered" },
+            { icon: MapPin, title: "In-Home Services", desc: "Comfortable & convenient" },
+            { icon: Heart, title: "Family-Centered", desc: "Personalized care plans" }
+          ].map((badge, index) => (
+            <div key={index} style={styles.trustBadge}>
+              <div style={styles.trustBadgeIcon}>
+                <badge.icon size={20} color="#e11d48" />
+              </div>
+              <h4 style={styles.trustBadgeTitle}>{badge.title}</h4>
+              <p style={styles.trustBadgeDesc}>{badge.desc}</p>
+            </div>
+          ))}
+        </div>
+      </main>
+
+      {/* Form Modal */}
+      {isOpen && (
+        <div 
+          style={styles.modal}
+          onClick={(e) => e.target === e.currentTarget && !isSubmitting && setIsOpen(false)}
+        >
+          <div style={styles.modalContent}>
+            <div style={styles.modalHeader}>
+              <h2 style={styles.modalTitle}>Join Our Waitlist</h2>
+              <button
+                onClick={() => !isSubmitting && setIsOpen(false)}
+                style={styles.closeButton}
+                disabled={isSubmitting}
+              >
+                <X size={20} color="#6b7280" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSignup} style={styles.form}>
               {errorMessage && (
-                <div className="text-red-600 bg-red-50 border border-red-200 rounded-lg p-3 mb-4 text-center">
+                <div style={styles.errorBox}>
+                  <div style={styles.errorIcon}>
+                    <X size={12} color="#dc2626" />
+                  </div>
                   {errorMessage}
                 </div>
               )}
-              
-              <div className="d-flex justify-content-center align-items-center bg-light">
-                <div className="col-md-6 col-12">
-                  <div className="contact_form_wrap">
-                    <form onSubmit={handleSignup}>
-                      <div className="cn_input_waitlist input_group">
-                        <input 
-                          type="text" 
-                          placeholder="Parent/Guardian Name *" 
-                          value={name} 
-                          onChange={(e) => setName(e.target.value)} 
-                          disabled={isSubmitting}
-                          required 
-                        />
-                      </div>
-                      
-                      <div className="cn_input input_group">
-                        <select 
-                          value={age} 
-                          onChange={(e) => setAge(e.target.value)} 
-                          disabled={isSubmitting}
-                          required
-                        >
-                          <option value="">Select your child's age</option>
-                          <option value="3">3 years old</option>
-                          <option value="4">4 years old</option>
-                          <option value="5">5 years old</option>
-                          <option value="6">6 years old</option>
-                          <option value="7">7 years old</option>
-                          <option value="8">8 years old</option>
-                          <option value="9">9 years old</option>
-                          <option value="10">10 years old</option>
-                          <option value="11">11 years old</option>
-                          <option value="12">12 years old</option>
-                          <option value="13">13 years old</option>
-                          <option value="14">14 years old</option>
-                          <option value="15">15 years old</option>
-                        </select>
-                      </div>
-                      
-                      <div className="cn_input_waitlist">
-                        <input 
-                          type="text" 
-                          placeholder="Insurance Provider (e.g., Blue Shield, Kaiser, Medi-Cal) *" 
-                          value={insurance} 
-                          onChange={(e) => setInsurance(e.target.value)} 
-                          disabled={isSubmitting}
-                          required 
-                        />
-                      </div>
-                      
-                      <div className="cn_input_waitlist">
-                        <input 
-                          type="text" 
-                          placeholder="City/Location (e.g., San Jose, Santa Clara) *" 
-                          value={location} 
-                          onChange={(e) => setLocation(e.target.value)} 
-                          disabled={isSubmitting}
-                          required 
-                        />
-                      </div>
-                      
-                      <div className="cn_input_waitlist">
-                        <input 
-                          type="email" 
-                          placeholder="Email Address *" 
-                          value={email} 
-                          onChange={(e) => setEmail(e.target.value)} 
-                          disabled={isSubmitting}
-                          required 
-                        />
-                      </div>
-                      
-                      <div className="cn_input_waitlist">
-                        <input 
-                          type="tel" 
-                          name="phone" 
-                          placeholder="Phone Number (optional - helps us contact you faster)" 
-                          value={phoneNumber} 
-                          onChange={(e) => setPhoneNumber(e.target.value)}
-                          disabled={isSubmitting}
-                        />
-                      </div>
-                      
-                      <button 
-                        className="cn_input_waitlist" 
-                        type="submit"
-                        disabled={isSubmitting}
-                        style={{ opacity: isSubmitting ? 0.6 : 1, cursor: isSubmitting ? 'not-allowed' : 'pointer' }}
-                      >
-                        {isSubmitting ? 'Joining Waitlist...' : 'Join Waitlist'}
-                      </button>
-                    </form>
-                  </div>
+
+              {/* Name Field */}
+              <div style={styles.formGroup}>
+                <label style={styles.label}>
+                  Parent/Guardian Name <span style={styles.required}>*</span>
+                </label>
+                <div style={styles.inputWrapper}>
+                  <User size={20} style={styles.inputIcon} />
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => { setName(e.target.value); clearFieldError('name'); }}
+                    placeholder="Enter your full name"
+                    disabled={isSubmitting}
+                    style={{...styles.input, ...(fieldErrors.name ? styles.inputError : {})}}
+                  />
                 </div>
+                {fieldErrors.name && <p style={styles.errorText}>{fieldErrors.name}</p>}
               </div>
-            </div>
+
+              {/* Age Field */}
+              <div style={styles.formGroup}>
+                <label style={styles.label}>
+                  Child's Age <span style={styles.required}>*</span>
+                </label>
+                <div style={styles.inputWrapper}>
+                  <Calendar size={20} style={styles.inputIcon} />
+                  <select
+                    value={age}
+                    onChange={(e) => { setAge(e.target.value); clearFieldError('age'); }}
+                    disabled={isSubmitting}
+                    style={{...styles.select, ...(fieldErrors.age ? styles.inputError : {})}}
+                  >
+                    <option value="" disabled>Select your child's age</option>
+                    {[...Array(13)].map((_, i) => (
+                      <option key={i + 3} value={i + 3}>{i + 3} years old</option>
+                    ))}
+                  </select>
+                  <ChevronRight size={20} style={{...styles.inputIcon, left: 'auto', right: '12px', transform: 'translateY(-50%) rotate(90deg)'}} />
+                </div>
+                {fieldErrors.age && <p style={styles.errorText}>{fieldErrors.age}</p>}
+              </div>
+
+              {/* Insurance Field */}
+              <div style={styles.formGroup}>
+                <label style={styles.label}>
+                  Insurance Provider <span style={styles.required}>*</span>
+                </label>
+                <div style={styles.inputWrapper}>
+                  <Shield size={20} style={styles.inputIcon} />
+                  <input
+                    type="text"
+                    value={insurance}
+                    onChange={(e) => { setInsurance(e.target.value); clearFieldError('insurance'); }}
+                    placeholder="e.g., Blue Shield, Kaiser, Medi-Cal"
+                    disabled={isSubmitting}
+                    style={{...styles.input, ...(fieldErrors.insurance ? styles.inputError : {})}}
+                  />
+                </div>
+                {fieldErrors.insurance && <p style={styles.errorText}>{fieldErrors.insurance}</p>}
+              </div>
+
+              {/* Location Field */}
+              <div style={styles.formGroup}>
+                <label style={styles.label}>
+                  City/Location <span style={styles.required}>*</span>
+                </label>
+                <div style={styles.inputWrapper}>
+                  <MapPin size={20} style={styles.inputIcon} />
+                  <input
+                    type="text"
+                    value={location}
+                    onChange={(e) => { setLocation(e.target.value); clearFieldError('location'); }}
+                    placeholder="e.g., San Jose, Santa Clara"
+                    disabled={isSubmitting}
+                    style={{...styles.input, ...(fieldErrors.location ? styles.inputError : {})}}
+                  />
+                </div>
+                {fieldErrors.location && <p style={styles.errorText}>{fieldErrors.location}</p>}
+              </div>
+
+              {/* Email Field */}
+              <div style={styles.formGroup}>
+                <label style={styles.label}>
+                  Email Address <span style={styles.required}>*</span>
+                </label>
+                <div style={styles.inputWrapper}>
+                  <Mail size={20} style={styles.inputIcon} />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => { setEmail(e.target.value); clearFieldError('email'); }}
+                    placeholder="your@email.com"
+                    disabled={isSubmitting}
+                    style={{...styles.input, ...(fieldErrors.email ? styles.inputError : {})}}
+                  />
+                </div>
+                {fieldErrors.email && <p style={styles.errorText}>{fieldErrors.email}</p>}
+              </div>
+
+              {/* Phone Field */}
+              <div style={styles.formGroup}>
+                <label style={styles.label}>
+                  Phone Number <span style={styles.optional}>(optional)</span>
+                </label>
+                <div style={styles.inputWrapper}>
+                  <Phone size={20} style={styles.inputIcon} />
+                  <input
+                    type="tel"
+                    value={phoneNumber}
+                    onChange={handlePhoneChange}
+                    placeholder="(123) 456-7890"
+                    disabled={isSubmitting}
+                    style={{...styles.input, ...(fieldErrors.phoneNumber ? styles.inputError : {})}}
+                  />
+                </div>
+                {fieldErrors.phoneNumber && <p style={styles.errorText}>{fieldErrors.phoneNumber}</p>}
+                <p style={styles.helpText}>Helps us contact you faster about therapy availability</p>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                style={{...styles.submitButton, ...(isSubmitting ? styles.submitButtonDisabled : {})}}
+              >
+                {isSubmitting ? (
+                  <>
+                    <Loader2 size={20} style={styles.spin} />
+                    Joining Waitlist...
+                  </>
+                ) : (
+                  <>
+                    <Plus size={20} />
+                    Join Waitlist
+                  </>
+                )}
+              </button>
+            </form>
           </div>
         </div>
       )}
-      
+
       {/* Success Modal */}
       {showSuccessModal && (
-        <div className="popup-form-container">
-          <div className="popup-form" style={{ maxWidth: '500px' }}>
-            <span className="close-btn" onClick={() => setShowSuccessModal(false)}>&times;</span>
-            <div className="container text-center p-6">
-              <div className="text-green-500 text-6xl mb-4 success-icon">✓</div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-3">Welcome to Our Waitlist!</h2>
-              <p className="text-lg text-gray-700 mb-4">
-                You're now <strong className="text-blue-600">#{position}</strong> on our waitlist
-              </p>
-              <div className="bg-blue-50 rounded-lg p-4 mb-4 text-left">
-                <h3 className="font-semibold text-gray-800 mb-2">What's Next?</h3>
-                <ul className="text-sm text-gray-700 space-y-2">
-                  <li className="stagger-item">✉️ Check your email for a confirmation message</li>
-                  <li className="stagger-item">📞 We'll contact you within 2-3 business days</li>
-                  <li className="stagger-item">📋 We'll discuss your child's needs and next steps</li>
-                  <li className="stagger-item">🎉 You'll be notified when a therapy slot opens</li>
-                </ul>
+        <div 
+          style={styles.modal}
+          onClick={(e) => e.target === e.currentTarget && setShowSuccessModal(false)}
+        >
+          <div style={{...styles.modalContent, maxWidth: '448px'}}>
+            <div style={styles.successModal}>
+              <div style={styles.successIcon}>
+                <Check size={40} color="#16a34a" />
               </div>
-              <p className="text-sm text-gray-600 mb-4">
-                Questions? Call us at <strong>(484) 985-0189</strong> or email <strong>info@ohanatherapies.com</strong>
+              
+              <h2 style={styles.successTitle}>Welcome to Our Waitlist!</h2>
+              <p style={styles.successText}>
+                You're now <span style={styles.positionNumber}>#{position}</span> on our waitlist
               </p>
-              <button 
-                className="cm_btn" 
+
+              <div style={styles.nextStepsBox}>
+                <h3 style={styles.nextStepsTitle}>What's Next?</h3>
+                {[
+                  { icon: Mail, text: "Check your email for confirmation" },
+                  { icon: Phone, text: "We'll contact you within 2-3 days" },
+                  { icon: User, text: "Discuss your child's needs" },
+                  { icon: Check, text: "Get notified when a slot opens" }
+                ].map((item, index) => (
+                  <div key={index} style={styles.nextStepItem}>
+                    <div style={styles.nextStepIcon}>
+                      <item.icon size={14} color="#e11d48" />
+                    </div>
+                    {item.text}
+                  </div>
+                ))}
+              </div>
+
+              <p style={styles.contactInfo}>
+                Questions? Call <span style={styles.contactBold}>(484) 985-0189</span> or email{" "}
+                <span style={styles.contactBold}>info@ohanatherapies.com</span>
+              </p>
+
+              <button
                 onClick={() => setShowSuccessModal(false)}
-                style={{ padding: '12px 30px', fontSize: '16px' }}
+                style={styles.primaryButton}
               >
                 Close
               </button>
@@ -356,7 +934,6 @@ export default function Waitlist() {
           </div>
         </div>
       )}
-      </div>
-    </>
+    </div>
   );
 }
