@@ -24,6 +24,7 @@ import '../src/assets/css/modern-footer.css';
 import '../src/assets/css/better-spacing.css';
 import '../src/assets/css/careers-form.css';
 
+
 function AppContent() {
   // Track page views on route changes
   usePageTracking();
