@@ -58,7 +58,7 @@ const Hero = () => {
       "contactPoint": {
         "@type": "ContactPoint",
         "contactType": "customer service",
-        "telephone": "+1-408-123-4567",
+        "telephone": "+1-484-985-0189",
         "email": "info@ohanatherapies.com",
         "areaServed": ["San Jose", "Santa Clara", "Bay Area"],
         "availableLanguage": "English"

@@ -38,7 +38,7 @@ const SEO = ({
     "logo": "https://ohanatherapies.com/logo.png",
     "image": "https://ohanatherapies.com/logo.png",
     "priceRange": "$$",
-    "telephone": "+1-408-123-4567",
+    "telephone": "+1-484-985-0189",
     "email": "info@ohanatherapies.com",
     "address": {
       "@type": "PostalAddress",
@@ -115,7 +115,10 @@ const SEO = ({
   };
 
   return (
-    <Helmet>
+    <>
+      <link rel="alternate" href="https://ohanatherapies.com/llms.txt" type="text/plain" title="LLMs Text" />
+      <link rel="alternate" href="https://ohanatherapies.com/llms.txt" hrefLang="en" />
+      <Helmet>
       {/* Basic Meta Tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
@@ -170,6 +173,7 @@ const SEO = ({
         </script>
       )}
     </Helmet>
+    </>
   );
 };
 
