@@ -49,6 +49,14 @@ const Hero = () => {
             "@type": "State",
             "name": "California"
           }
+        },
+        {
+          "@type": "City",
+          "name": "Fremont",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
         }
       ],
       "geo": {
