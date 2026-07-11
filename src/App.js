@@ -63,8 +63,8 @@ function AppContent() {
                   description="Compassionate ABA therapy and autism support in San Jose and Santa Clara, CA. In-home services, family training, and insurance support."
                   keywords="ABA therapy San Jose, autism therapy Santa Clara, in-home ABA therapy, autism support Bay Area, ABA provider San Jose"
                   type="website"
-                  image="https://ohanatherapies.com/logo512.png"
-                  breadcrumbs={[{ name: 'Home', url: 'https://ohanatherapies.com' }]}
+                  image="https://www.ohanatherapies.com/logo512.png"
+                  breadcrumbs={[{ name: 'Home', url: 'https://www.ohanatherapies.com' }]}
                 />
                 <Header />
                 <div className="main_content">
@@ -91,8 +91,8 @@ function AppContent() {
                   description="Join the Ohana Therapies waitlist for in-home ABA therapy, autism support, and compassionate family-centered care in San Jose and Santa Clara."
                   keywords="ABA waitlist San Jose, autism therapy waitlist Santa Clara, join ABA therapy waitlist, in-home ABA therapy waitlist"
                   type="website"
-                  image="https://ohanatherapies.com/logo512.png"
-                  breadcrumbs={[{ name: 'Home', url: 'https://ohanatherapies.com' }, { name: 'Waitlist', url: 'https://ohanatherapies.com/waitlist' }]}
+                  image="https://www.ohanatherapies.com/logo512.png"
+                  breadcrumbs={[{ name: 'Home', url: 'https://www.ohanatherapies.com' }, { name: 'Waitlist', url: 'https://www.ohanatherapies.com/waitlist' }]}
                 />
                 <Header />
                 <Waitlist />

@@ -12,7 +12,7 @@ const Services2 = () => {
     "provider": {
       "@type": "Organization",
       "name": "Ohana Therapies",
-      "sameAs": "https://ohanatherapies.com"
+      "sameAs": "https://www.ohanatherapies.com"
     },
     "areaServed": {
       "@type": "City",
@@ -55,9 +55,9 @@ const Services2 = () => {
         structuredData={structuredData}
         image={services2Image}
         breadcrumbs={[
-          { name: 'Home', url: 'https://ohanatherapies.com' },
-          { name: 'Services', url: 'https://ohanatherapies.com/#service_sec' },
-          { name: 'Specialized Programs', url: 'https://ohanatherapies.com/#services2_sec' }
+          { name: 'Home', url: 'https://www.ohanatherapies.com' },
+          { name: 'Services', url: 'https://www.ohanatherapies.com/#service_sec' },
+          { name: 'Specialized Programs', url: 'https://www.ohanatherapies.com/#services2_sec' }
         ]}
       />
       <div className="container">

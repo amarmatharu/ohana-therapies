@@ -20,7 +20,7 @@ const Services = () => {
     "provider": {
       "@type": "Organization",
       "name": "Ohana Therapies",
-      "sameAs": "https://ohanatherapies.com"
+      "sameAs": "https://www.ohanatherapies.com"
     },
     "serviceType": "Applied Behavior Analysis (ABA) Therapy",
     "areaServed": [
@@ -90,8 +90,8 @@ const Services = () => {
         structuredData={structuredData}
         image={services_1}
         breadcrumbs={[
-          { name: 'Home', url: 'https://ohanatherapies.com' },
-          { name: 'Services', url: 'https://ohanatherapies.com/#service_sec' }
+          { name: 'Home', url: 'https://www.ohanatherapies.com' },
+          { name: 'Services', url: 'https://www.ohanatherapies.com/#service_sec' }
         ]}
       />
       <div className="container">

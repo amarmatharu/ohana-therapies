@@ -172,7 +172,7 @@ const Careers = () => {
     "hiringOrganization": {
       "@type": "Organization",
       "name": "Ohana Therapies",
-      "sameAs": "https://ohanatherapies.com"
+      "sameAs": "https://www.ohanatherapies.com"
     },
     "jobLocation": {
       "@type": "Place",

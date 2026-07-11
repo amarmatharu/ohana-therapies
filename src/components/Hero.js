@@ -14,13 +14,13 @@ const Hero = () => {
     "@type": "WebPage",
     "name": "Ohana Therapies - ABA Therapy Services in San Jose & Santa Clara",
     "description": "Empowering families through personalized Applied Behavior Analysis therapy in San Jose, Santa Clara, and the Bay Area, CA.",
-    "url": "https://ohanatherapies.com",
+    "url": "https://www.ohanatherapies.com",
     "mainEntity": {
       "@type": "Organization",
       "name": "Ohana Therapies",
       "description": "Leading ABA therapy provider serving San Jose and Santa Clara with family-centered care",
-      "url": "https://ohanatherapies.com",
-      "logo": "https://ohanatherapies.com/logo.png",
+      "url": "https://www.ohanatherapies.com",
+      "logo": "https://www.ohanatherapies.com/logo.png",
       "sameAs": [
         "https://www.facebook.com/ohanatherapies/",
         "https://www.linkedin.com/company/ohana-therapies"
@@ -75,7 +75,7 @@ const Hero = () => {
         structuredData={structuredData}
         image={hero1}
         breadcrumbs={[
-          { name: 'Home', url: 'https://ohanatherapies.com' }
+          { name: 'Home', url: 'https://www.ohanatherapies.com' }
         ]}
       />
       <div className="container">

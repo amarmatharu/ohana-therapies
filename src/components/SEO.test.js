@@ -11,7 +11,7 @@ describe('SEO component', () => {
       </MemoryRouter>
     );
 
-    const llmsLink = document.querySelector('link[rel="alternate"][href="https://ohanatherapies.com/llms.txt"]');
+    const llmsLink = document.querySelector('link[rel="alternate"][href="https://www.ohanatherapies.com/llms.txt"]');
     expect(llmsLink).not.toBeNull();
   });
 });

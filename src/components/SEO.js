@@ -12,7 +12,7 @@ const SEO = ({
   type = 'website'
 }) => {
   const location = useLocation();
-  const canonicalUrl = `https://ohanatherapies.com${location.pathname}`;
+  const canonicalUrl = `https://www.ohanatherapies.com${location.pathname}`;
 
   // Construct breadcrumb schema if provided
   const breadcrumbSchema = breadcrumbs ? {
@@ -30,13 +30,13 @@ const SEO = ({
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://ohanatherapies.com/#organization",
+    "@id": "https://www.ohanatherapies.com/#organization",
     "name": "Ohana Therapies",
     "alternateName": "Ohana ABA Therapy",
     "description": "Leading ABA therapy provider serving San Jose and Santa Clara, CA. Expert autism therapy services, in-home ABA therapy, and family support programs.",
-    "url": "https://ohanatherapies.com",
-    "logo": "https://ohanatherapies.com/logo.png",
-    "image": "https://ohanatherapies.com/logo.png",
+    "url": "https://www.ohanatherapies.com",
+    "logo": "https://www.ohanatherapies.com/logo.png",
+    "image": "https://www.ohanatherapies.com/logo.png",
     "priceRange": "$$",
     "telephone": "+1-484-985-0189",
     "email": "info@ohanatherapies.com",
@@ -116,8 +116,8 @@ const SEO = ({
 
   return (
     <>
-      <link rel="alternate" href="https://ohanatherapies.com/llms.txt" type="text/plain" title="LLMs Text" />
-      <link rel="alternate" href="https://ohanatherapies.com/llms.txt" hrefLang="en" />
+      <link rel="alternate" href="https://www.ohanatherapies.com/llms.txt" type="text/plain" title="LLMs Text" />
+      <link rel="alternate" href="https://www.ohanatherapies.com/llms.txt" hrefLang="en" />
       <Helmet>
       {/* Basic Meta Tags */}
       <title>{title}</title>

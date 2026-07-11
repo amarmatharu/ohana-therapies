@@ -9,7 +9,7 @@ const About = () => {
     "@type": "AboutPage",
     "name": "About Ohana Therapies",
     "description": "Learn about our mission to provide compassionate ABA therapy services to families in Santa Clara, CA.",
-    "url": "https://ohanatherapies.com/#about_sec",
+    "url": "https://www.ohanatherapies.com/#about_sec",
     "mainEntity": {
       "@type": "Organization",
       "name": "Ohana Therapies",
@@ -35,8 +35,8 @@ const About = () => {
         structuredData={structuredData}
         image={aboutImage}
         breadcrumbs={[
-          { name: 'Home', url: 'https://ohanatherapies.com' },
-          { name: 'About', url: 'https://ohanatherapies.com/#about_sec' }
+          { name: 'Home', url: 'https://www.ohanatherapies.com' },
+          { name: 'About', url: 'https://www.ohanatherapies.com/#about_sec' }
         ]}
       />
       <div className="container">
