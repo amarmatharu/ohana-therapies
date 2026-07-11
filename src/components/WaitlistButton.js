@@ -1,16 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
 
 const WaitlistButton = () => {
   const navigate = useNavigate();
 
   return (
     <div style={{ width: "275px" }}>
-      <Helmet>
-        <title>Join the Waitlist - Ohana Therapies</title>
-        <meta name="description" content="Sign up for the Ohana Therapies waitlist and receive priority access to our services." />
-      </Helmet>
       <div>
         <button
           onClick={() => navigate("/waitlist")}
