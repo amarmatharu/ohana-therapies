@@ -73,7 +73,7 @@ const Hero = () => {
         description="Leading ABA therapy provider in San Jose and Santa Clara, CA. Expert autism therapy, in-home ABA services, family-centered care. Insurance accepted. Join our waitlist today."
         keywords="ABA therapy San Jose, ABA therapy Santa Clara, autism therapy San Jose, autism services Santa Clara, applied behavior analysis Bay Area, in-home ABA therapy, behavioral therapy San Jose, family-centered autism care, ABA provider San Jose"
         structuredData={structuredData}
-        image={hero1}
+        image="https://www.ohanatherapies.com/logo512.png"
         breadcrumbs={[
           { name: 'Home', url: 'https://www.ohanatherapies.com' }
         ]}

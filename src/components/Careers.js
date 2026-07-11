@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import SEO from './SEO';
 import config from '../config';
 import '../assets/css/style.css';
 import heart_icon from '../assets/images/heart_1.png';
@@ -187,17 +186,12 @@ const Careers = () => {
 
   return (
     <section className="page-section" id="careers_sec">
-      <SEO 
-        title="Careers at Ohana Therapies | Join Our Team in San Jose & Santa Clara"
-        description="Join the Ohana Therapies team! We're hiring Behavior Interventionists and BCBAs in San Jose and Santa Clara. Apply today and make a difference."
-        keywords="ABA therapy jobs, behavior interventionist jobs San Jose, BCBA jobs Santa Clara, autism therapy careers"
-        structuredData={structuredData}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       
       <div className="container">
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
-            <h1 className="sec_titel_text">Careers</h1>
+            <h2 className="sec_titel_text">Careers</h2>
           </div>
           <p className="dummy_text">
             Ohana Therapies is founded on the philosophy of providing services with Meraki—doing something with soul, creativity, or love. 

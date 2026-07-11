@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import config from '../config';
 import '../assets/css/style.css';
@@ -107,14 +106,10 @@ const Contact = () => {
 
   return (
     <section id="contact_info_sec">
-      <Helmet>
-        <title>Contact Ohana Therapies | San Jose & Santa Clara ABA Therapy</title>
-        <meta name="description" content="Contact Ohana Therapies for ABA therapy inquiries in San Jose and Santa Clara. Call (484) 985-0189 or send us a message." />
-      </Helmet>
       <div className="container">
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
-            <h1 className="sec_titel_text">Contact <span>Information</span></h1>
+            <h2 className="sec_titel_text">Contact <span>Information</span></h2>
           </div>
           <p className="dummy_text">
             Have questions about our ABA therapy services? We're here to help! 

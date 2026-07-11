@@ -9,6 +9,7 @@ import Services2 from "./components/Services2";
 import Insurance from "./components/Insurance";
 import Careers from "./components/Careers";
 import Contact from "./components/Contact";
+import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import Waitlist from "./components/waitlist";
 import SEO from "./components/SEO";
@@ -58,14 +59,6 @@ function AppContent() {
             path="/"
             element={
               <>
-                <SEO
-                  title="ABA Therapy San Jose & Santa Clara | Ohana Therapies"
-                  description="Compassionate ABA therapy and autism support in San Jose and Santa Clara, CA. In-home services, family training, and insurance support."
-                  keywords="ABA therapy San Jose, autism therapy Santa Clara, in-home ABA therapy, autism support Bay Area, ABA provider San Jose"
-                  type="website"
-                  image="https://www.ohanatherapies.com/logo512.png"
-                  breadcrumbs={[{ name: 'Home', url: 'https://www.ohanatherapies.com' }]}
-                />
                 <Header />
                 <div className="main_content">
                   <Hero />
@@ -74,6 +67,7 @@ function AppContent() {
                   <Services2 />
                   <Insurance />
                   <Careers />
+                  <FAQ />
                   <Contact />
                 </div>
                 <Footer />

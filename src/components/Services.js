@@ -1,5 +1,4 @@
 import React from 'react';
-import SEO from './SEO';
 import '../assets/js/bootstrap.bundle.js';
 import '../assets/js/bootstrap.bundle.js.map';
 import '../assets/js/custom.js';
@@ -83,21 +82,11 @@ const Services = () => {
 
   return (
     <section className="page-section" id="service_sec">
-      <SEO
-        title="ABA Therapy Services San Jose & Santa Clara | In-Home Autism Therapy | Ohana"
-        description="Expert ABA therapy services in San Jose and Santa Clara. In-home autism therapy, family training programs, behavioral support. Insurance accepted. Serving the Bay Area."
-        keywords="ABA therapy services San Jose, in-home therapy Santa Clara, family training ABA, behavioral therapy San Jose, autism services Santa Clara, ABA provider Bay Area, applied behavior analysis San Jose"
-        structuredData={structuredData}
-        image={services_1}
-        breadcrumbs={[
-          { name: 'Home', url: 'https://www.ohanatherapies.com' },
-          { name: 'Services', url: 'https://www.ohanatherapies.com/#service_sec' }
-        ]}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <div className="container">
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
-            <h1 className="sec_titel_text">Services</h1>
+            <h2 className="sec_titel_text">Services</h2>
           </div>
         </div>
         <div className="row mt_top_30">

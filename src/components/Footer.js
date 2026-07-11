@@ -1,5 +1,4 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import '../assets/css/style.css';
 
@@ -8,10 +7,6 @@ const Footer = () => {
   
   return (
     <footer className="modern_footer" id="footer_section">
-      <Helmet>
-        <title>Ohana Therapies - Contact & Information</title>
-        <meta name="description" content="Contact Ohana Therapies for expert ABA therapy services in San Jose and Santa Clara. Insurance accepted." />
-      </Helmet>
       
       {/* Main Footer Content */}
       <div className="footer_main">

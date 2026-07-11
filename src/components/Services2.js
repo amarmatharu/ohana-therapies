@@ -1,5 +1,4 @@
 import React from 'react';
-import SEO from './SEO';
 import '../assets/css/style.css';
 import services2Image from '../assets/images/services_2.png';
 
@@ -48,22 +47,11 @@ const Services2 = () => {
 
   return (
     <section className="page-section" id="services2_sec">
-      <SEO
-        title="Specialized ABA Programs | Ohana Therapies"
-        description="Explore our specialized ABA therapy programs focusing on social skills development and behavior management in Santa Clara, CA."
-        keywords="ABA programs, social skills therapy, behavior management, specialized therapy, Santa Clara ABA"
-        structuredData={structuredData}
-        image={services2Image}
-        breadcrumbs={[
-          { name: 'Home', url: 'https://www.ohanatherapies.com' },
-          { name: 'Services', url: 'https://www.ohanatherapies.com/#service_sec' },
-          { name: 'Specialized Programs', url: 'https://www.ohanatherapies.com/#services2_sec' }
-        ]}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <div className="container">
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
-            <h1 className="sec_titel_text">Specialized Programs</h1>
+            <h2 className="sec_titel_text">Specialized Programs</h2>
           </div>
         </div>
         <div className="row">

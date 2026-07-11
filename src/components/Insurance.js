@@ -1,5 +1,4 @@
 import React from 'react';
-import SEO from './SEO';
 import '../assets/css/style.css';
 import insurance1 from '../assets/images/insurances-1.png';
 import insurance2 from '../assets/images/insurances-2.png';
@@ -30,12 +29,7 @@ const Insurance = () => {
 
   return (
     <section className="insurance_section" id="insurance_sec">
-      <SEO
-        title="Insurance Accepted - ABA Therapy San Jose | Ohana Therapies"
-        description="We accept Santa Clara Family Health Plan, Cigna, and Anthem insurance for ABA therapy in San Jose and Santa Clara."
-        keywords="ABA therapy insurance, Santa Clara Family Health, Cigna, Anthem, insurance coverage San Jose, autism therapy insurance, ABA insurance accepted"
-        structuredData={structuredData}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       
       <div className="container">
         <div className="insurance_content">

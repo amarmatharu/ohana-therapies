@@ -1,5 +1,4 @@
 import React from "react";
-import { Helmet } from "react-helmet";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../assets/css/style.css";
 import logo from "../assets/images/logo.png";
@@ -42,10 +41,6 @@ const Header = () => {
 
   return (
     <header id="header_wrapper" className="sticky">
-      <Helmet>
-        <title>Ohana Therapies - Navigation</title>
-        <meta name="description" content="Explore Ohana Therapies through our easy-to-navigate website." />
-      </Helmet>
       <div id="top_bar">
         <div className="container">
           <div className="contact_text">

@@ -1,7 +1,5 @@
 import React from 'react';
-import SEO from './SEO';
 import '../assets/css/style.css';
-import aboutImage from '../assets/images/about_right.png';
 
 const About = () => {
   const structuredData = {
@@ -28,21 +26,11 @@ const About = () => {
 
   return (
     <section className="page-section" id="about_sec">
-      <SEO
-        title="About Ohana Therapies | Our Mission and Values"
-        description="Learn about Ohana Therapies' commitment to providing compassionate ABA therapy services and our family-centered approach to care."
-        keywords="about Ohana Therapies, ABA therapy mission, family-centered care, Santa Clara ABA provider"
-        structuredData={structuredData}
-        image={aboutImage}
-        breadcrumbs={[
-          { name: 'Home', url: 'https://www.ohanatherapies.com' },
-          { name: 'About', url: 'https://www.ohanatherapies.com/#about_sec' }
-        ]}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
       <div className="container">
         <div className="cm_sec_ttile">
           <div className="sec_ttile">
-            <h1 className="sec_titel_text">About <span>Ohana</span></h1>
+            <h2 className="sec_titel_text">About <span>Ohana</span></h2>
           </div>
           <p className="dummy_text">
             "Ohana" is a Hawaiian term that means family, in all of its forms: blood-related, adoptive, and chosen.
