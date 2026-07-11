@@ -25,13 +25,6 @@ const Hero = () => {
         "https://www.facebook.com/ohanatherapies/",
         "https://www.linkedin.com/company/ohana-therapies"
       ],
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Santa Clara",
-        "addressRegion": "CA",
-        "postalCode": "95050",
-        "addressCountry": "US"
-      },
       "areaServed": [
         {
           "@type": "City",
@@ -44,6 +37,14 @@ const Hero = () => {
         {
           "@type": "City",
           "name": "Santa Clara",
+          "containedInPlace": {
+            "@type": "State",
+            "name": "California"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Milpitas",
           "containedInPlace": {
             "@type": "State",
             "name": "California"

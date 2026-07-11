@@ -40,13 +40,6 @@ const SEO = ({
     "priceRange": "$$",
     "telephone": "+1-484-985-0189",
     "email": "info@ohanatherapies.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Santa Clara",
-      "addressRegion": "CA",
-      "postalCode": "95050",
-      "addressCountry": "US"
-    },
     "areaServed": [
       {
         "@type": "City",
@@ -59,6 +52,14 @@ const SEO = ({
       {
         "@type": "City",
         "name": "Santa Clara",
+        "containedInPlace": {
+          "@type": "State",
+          "name": "California"
+        }
+      },
+      {
+        "@type": "City",
+        "name": "Milpitas",
         "containedInPlace": {
           "@type": "State",
           "name": "California"
