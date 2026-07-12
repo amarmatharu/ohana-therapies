@@ -107,7 +107,7 @@ const Services = () => {
           <div className="col-md-6 col-12 order-md-1">
             <div className="service_content">
               <h3 className="service_title">Where are the services provided:</h3>
-              <h6 className="service_sub">We come to you in San Jose & Santa Clara!</h6>
+              <h4 className="service_sub">We come to you in San Jose & Santa Clara!</h4>
               <p className="service_text">
                 Your Ohana Therapist meets you where you are throughout San Jose, Santa Clara, and the Bay Area - whether it's caregiver's home, or a
                 typically attended setting, such as a preschool or daycare. We work around your busy
@@ -135,7 +135,7 @@ const Services = () => {
           <div className="col-md-6 col-12">
             <div className="service_content">
               <h3 className="service_title">Our Approach:</h3>
-              <h3 className="service_sub">Personalized ABA therapy</h3>
+              <h4 className="service_sub">Personalized ABA therapy</h4>
               <p className="service_text">At Ohana Therapies, we believe in personalized care that is
                 grounded in play with the very best therapist.</p>
               <p className="service_text">Ohana Therapies provides personalized weekly ABA therapy,

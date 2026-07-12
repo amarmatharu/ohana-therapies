@@ -62,7 +62,7 @@ function AppContent() {
             element={
               <>
                 <Header />
-                <div className="main_content">
+                <main className="main_content">
                   <Hero />
                   <About />
                   <Services />
@@ -71,7 +71,7 @@ function AppContent() {
                   <Careers />
                   <FAQ />
                   <Contact />
-                </div>
+                </main>
                 <Footer />
               </>
             }
@@ -91,7 +91,9 @@ function AppContent() {
                   breadcrumbs={[{ name: 'Home', url: 'https://www.ohanatherapies.com' }, { name: 'Waitlist', url: 'https://www.ohanatherapies.com/waitlist' }]}
                 />
                 <Header />
-                <Waitlist />
+                <main>
+                  <Waitlist />
+                </main>
               </>
             }
           />
