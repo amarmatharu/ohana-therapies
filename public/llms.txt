@@ -1,21 +1,26 @@
 # Ohana Therapies
 
-Ohana Therapies is a family-centered ABA therapy provider serving San Jose and Santa Clara, California. We offer in-home applied behavior analysis (ABA) therapy, autism support services, family training, and insurance guidance for families seeking compassionate, evidence-based care.
+> Ohana Therapies is a family-centered provider of in-home ABA (Applied Behavior Analysis) therapy for children with autism, serving San Jose, Santa Clara, Fremont, Milpitas, and the greater Bay Area, California.
+
+Ohana Therapies delivers individualized, evidence-based ABA therapy in the family's own home, along with autism support, parent training, and insurance guidance. We accept most major insurance plans, including Santa Clara Family Health Plan, Cigna, and Anthem, and handle the paperwork so families can focus on their child.
+
+## Pages
+
+- [Home](https://www.ohanatherapies.com/): Overview of Ohana Therapies' in-home ABA therapy and autism services across the Bay Area.
+- [Join the Waitlist](https://www.ohanatherapies.com/waitlist): Sign up to get started with ABA therapy, including insurance verification and scheduling.
+- [ABA Therapy in San Jose](https://www.ohanatherapies.com/aba-therapy-san-jose): In-home ABA therapy for children with autism across San Jose, CA.
+- [ABA Therapy in Santa Clara](https://www.ohanatherapies.com/aba-therapy-santa-clara): In-home ABA therapy for children with autism across Santa Clara, CA.
+- [ABA Therapy in Fremont](https://www.ohanatherapies.com/aba-therapy-fremont): In-home ABA therapy for children with autism across Fremont, CA.
 
 ## Services
-- In-home ABA therapy
-- Autism therapy and support
-- Family training and coaching
-- Insurance support and guidance
 
-## Locations
-- San Jose, California
-- Santa Clara, California
-- Greater Bay Area
-
-## Website
-https://www.ohanatherapies.com/
+- [In-Home ABA Therapy](https://www.ohanatherapies.com/): Personalized applied behavior analysis delivered in your home.
+- [Autism Support](https://www.ohanatherapies.com/): Evidence-based programs to build communication, social, and daily-living skills.
+- [Family Training & Coaching](https://www.ohanatherapies.com/): Hands-on caregiver training so progress continues between sessions.
+- [Insurance Support](https://www.ohanatherapies.com/): Verification and paperwork assistance for most major plans.
 
 ## Contact
-Email: info@ohanatherapies.com
-Phone: +1-484-985-0189
+
+- Phone: +1-484-985-0189
+- Email: info@ohanatherapies.com
+- Service areas: San Jose, Santa Clara, Fremont, Milpitas, and the greater Bay Area, California
