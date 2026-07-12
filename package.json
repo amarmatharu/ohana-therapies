@@ -47,7 +47,10 @@
   "reactSnap": {
     "include": [
       "/",
-      "/waitlist"
+      "/waitlist",
+      "/aba-therapy-san-jose",
+      "/aba-therapy-santa-clara",
+      "/aba-therapy-fremont"
     ],
     "puppeteerArgs": [
       "--no-sandbox",

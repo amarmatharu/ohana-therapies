@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../assets/css/style.css';
+import locations from '../data/locations';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -51,7 +52,19 @@ const Footer = () => {
               </ul>
             </div>
             
-            {/* Column 4: Contact */}
+            {/* Column 4: Service Areas */}
+            <div className="footer_col">
+              <h4 className="footer_heading">Service Areas</h4>
+              <ul className="footer_links">
+                {locations.map((loc) => (
+                  <li key={loc.slug}>
+                    <Link to={`/${loc.slug}`}>ABA Therapy in {loc.city}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Column 5: Contact */}
             <div className="footer_col">
               <h4 className="footer_heading">Contact Us</h4>
               <ul className="footer_contact">

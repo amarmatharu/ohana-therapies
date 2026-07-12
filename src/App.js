@@ -13,6 +13,8 @@ import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import Waitlist from "./components/waitlist";
 import SEO from "./components/SEO";
+import LocationPage from "./components/LocationPage";
+import locations from "./data/locations";
 import usePageTracking from "./hooks/usePageTracking";
 import '../src/assets/css/style.css';
 import '../src/assets/css/bootstrap.min.css';
@@ -93,6 +95,15 @@ function AppContent() {
               </>
             }
           />
+
+          {/* Location Landing Pages */}
+          {locations.map((loc) => (
+            <Route
+              key={loc.slug}
+              path={`/${loc.slug}`}
+              element={<LocationPage location={loc} />}
+            />
+          ))}
         </Routes>
       </div>
     </div>

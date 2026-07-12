@@ -2,53 +2,43 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  
+
   <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://www.ohanatherapies.com/</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
+
   <!-- Waitlist Page - High Priority for Conversions -->
   <url>
     <loc>https://www.ohanatherapies.com/waitlist</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
-  
-  <!-- About Section -->
+
+  <!-- Location Landing Pages -->
   <url>
-    <loc>https://www.ohanatherapies.com/#about_sec</loc>
-    <lastmod>2026-07-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Services Section - Critical for SEO -->
-  <url>
-    <loc>https://www.ohanatherapies.com/#service_sec</loc>
-    <lastmod>2026-07-11</lastmod>
+    <loc>https://www.ohanatherapies.com/aba-therapy-san-jose</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
-  <!-- Careers Section -->
+
   <url>
-    <loc>https://www.ohanatherapies.com/#careers_sec</loc>
-    <lastmod>2026-07-11</lastmod>
+    <loc>https://www.ohanatherapies.com/aba-therapy-santa-clara</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
-  
-  <!-- Contact Section -->
+
   <url>
-    <loc>https://www.ohanatherapies.com/#contact_sec</loc>
-    <lastmod>2026-07-11</lastmod>
+    <loc>https://www.ohanatherapies.com/aba-therapy-fremont</loc>
+    <lastmod>2026-07-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.9</priority>
   </url>
-  
-</urlset> 
+
+</urlset>
