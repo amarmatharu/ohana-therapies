@@ -23,7 +23,8 @@ const Hero = () => {
       "logo": "https://www.ohanatherapies.com/logo.png",
       "sameAs": [
         "https://www.facebook.com/ohanatherapies/",
-        "https://www.linkedin.com/company/ohana-therapies"
+        "https://www.linkedin.com/company/ohana-therapies",
+        "https://www.yelp.com/biz/ohana-therapies-san-jose"
       ],
       "areaServed": [
         {

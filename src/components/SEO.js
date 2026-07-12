@@ -89,7 +89,8 @@ const SEO = ({
     ],
     "sameAs": [
       "https://www.facebook.com/ohanatherapies/",
-      "https://www.linkedin.com/company/ohana-therapies"
+      "https://www.linkedin.com/company/ohana-therapies",
+      "https://www.yelp.com/biz/ohana-therapies-san-jose"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
