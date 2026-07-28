@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "../assets/css/style.css";
 import logo from "../assets/images/logo.png";
@@ -10,21 +10,45 @@ const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isWaitlistPage = location.pathname === "/waitlist";
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isFixed, setIsFixed] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setIsFixed(window.scrollY >= 100);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("cm-overflow", menuOpen);
+    return () => document.documentElement.classList.remove("cm-overflow");
+  }, [menuOpen]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [location.pathname]);
+
+  const toggleMenu = () => setMenuOpen((open) => !open);
+
+  const closeMenu = () => setMenuOpen(false);
 
   const handleScroll = (event, sectionId) => {
     event.preventDefault();
-    const headerHeight = document.getElementById('header_wrapper')?.offsetHeight || 0;
-    const scrollOffset = headerHeight + 10; // Reduced padding for more precise positioning
+    closeMenu();
+
+    const headerHeight = document.getElementById("header_wrapper")?.offsetHeight || 0;
+    const scrollOffset = headerHeight + 10;
 
     const scrollToSection = () => {
       const section = document.getElementById(sectionId);
       if (section) {
         const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = elementPosition - scrollOffset;
-        
+
         window.scrollTo({
           top: offsetPosition,
-          behavior: "smooth"
+          behavior: "smooth",
         });
       }
     };
@@ -40,7 +64,7 @@ const Header = () => {
   };
 
   return (
-    <header id="header_wrapper" className="sticky">
+    <header id="header_wrapper" className={`sticky${isFixed ? " fixed" : ""}`}>
       <div id="top_bar">
         <div className="container">
           <div className="contact_text">
@@ -58,32 +82,50 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="header_menu container">
+      <div className={`header_menu container${menuOpen ? " open_menu" : ""}`}>
         <div className="w_logo">
-          <Link to="/" className="logo_wrap" aria-label="Go to Home Page">
+          <Link to="/" className="logo_wrap" aria-label="Go to Home Page" onClick={closeMenu}>
             <img src={logo} alt="Ohana Therapies Logo" loading="lazy" />
           </Link>
         </div>
         {!isWaitlistPage && (
-          <nav className="menu_item_wrap menu_block" aria-label="Main Navigation">
-            <ul className="inn_menu">
-              <li className="menu_item">
-                <a href="#hero_sec" onClick={(e) => handleScroll(e, "hero_sec")} className="menu_list" aria-label="Go to Home">Home</a>
-              </li>
-              <li className="menu_item">
-                <a href="#about_sec" onClick={(e) => handleScroll(e, "about_sec")} className="menu_list" aria-label="Go to About Section">ABOUT OHANA</a>
-              </li>
-              <li className="menu_item">
-                <a href="#service_sec" onClick={(e) => handleScroll(e, "service_sec")} className="menu_list" aria-label="Go to Services Section">SERVICES</a>
-              </li>
-              <li className="menu_item">
-                <a href="#careers_sec" onClick={(e) => handleScroll(e, "careers_sec")} className="menu_list" aria-label="Go to Careers Section">CAREERS</a>
-              </li>
-              <li className="menu_item">
-                <a href="#contact_info_sec" onClick={(e) => handleScroll(e, "contact_info_sec")} className="menu_list" aria-label="Go to Contact Section">CONTACT US</a>
-              </li>
-            </ul>
-          </nav>
+          <>
+            <button
+              type="button"
+              className="menu_toggle_btn"
+              aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={menuOpen}
+              aria-controls="main-navigation"
+              onClick={toggleMenu}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+            <nav
+              id="main-navigation"
+              className="menu_item_wrap menu_block"
+              aria-label="Main Navigation"
+            >
+              <ul className="inn_menu">
+                <li className="menu_item">
+                  <a href="#hero_sec" onClick={(e) => handleScroll(e, "hero_sec")} className="menu_list" aria-label="Go to Home">Home</a>
+                </li>
+                <li className="menu_item">
+                  <a href="#about_sec" onClick={(e) => handleScroll(e, "about_sec")} className="menu_list" aria-label="Go to About Section">ABOUT OHANA</a>
+                </li>
+                <li className="menu_item">
+                  <a href="#service_sec" onClick={(e) => handleScroll(e, "service_sec")} className="menu_list" aria-label="Go to Services Section">SERVICES</a>
+                </li>
+                <li className="menu_item">
+                  <a href="#careers_sec" onClick={(e) => handleScroll(e, "careers_sec")} className="menu_list" aria-label="Go to Careers Section">CAREERS</a>
+                </li>
+                <li className="menu_item">
+                  <a href="#contact_info_sec" onClick={(e) => handleScroll(e, "contact_info_sec")} className="menu_list" aria-label="Go to Contact Section">CONTACT US</a>
+                </li>
+              </ul>
+            </nav>
+          </>
         )}
       </div>
     </header>

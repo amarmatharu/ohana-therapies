@@ -1,8 +1,4 @@
 import React from 'react';
-import '../assets/js/bootstrap.bundle.js';
-import '../assets/js/bootstrap.bundle.js.map';
-import '../assets/js/custom.js';
-import '../assets/js/jquery3.5.1.min.js';
 import '../assets/css/style.css';
 import '../assets/css/bootstrap.min.css';
 import '../assets/css/responsive.css';
